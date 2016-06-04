@@ -12,6 +12,6 @@ class Tweet extends Model
 		'username',
 		'full_name',
 		'tweet',
-		'created_at'
+		'tweeted_at'
 	];
 }
