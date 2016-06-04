@@ -1,0 +1,17 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tweet extends Model
+{
+	protected $fillable = [
+		'tweet_id',
+		'user_id',
+		'username',
+		'full_name',
+		'tweet',
+		'created_at'
+	];
+}

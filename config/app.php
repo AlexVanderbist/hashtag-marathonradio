@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'nl',
 
     /*
     |--------------------------------------------------------------------------
@@ -123,6 +123,8 @@ return [
 
     'providers' => [
 
+    	'Thujohn\Twitter\TwitterServiceProvider',
+
         /*
          * Laravel Framework Service Providers...
          */
@@ -170,6 +172,8 @@ return [
     */
 
     'aliases' => [
+		
+    	'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
