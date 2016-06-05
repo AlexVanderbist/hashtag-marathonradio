@@ -38,7 +38,7 @@
 				<div class="well">
 					<h1>{{$tpm}}</h1>
 					<h3>tweets per minuut</h3>
-					<small>Da's {{$tps}} tweets per seconde!</small>
+					<small>Da's {{round($tps,2)}} tweets per seconde!</small>
 				</div>
 			</div>
 
