@@ -5733,4 +5733,12 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+body {
+  padding-top: 30px;
+  font-family: 'Lato', sans-serif; }
+
+h1, h2 {
+  font-weight: bold;
+  color: #12367E; }
+
 /*# sourceMappingURL=app.css.map */

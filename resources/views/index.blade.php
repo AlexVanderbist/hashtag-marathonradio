@@ -9,11 +9,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title></title>
+	<title>#marathonradio</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 </head>
 
@@ -23,13 +24,36 @@
         <![endif]-->
 
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-4 col-sm-offset-4 well">
-				@foreach($usersWithMostHashtags as $user)
-				<div class="row">
-					{{$user->username}}: {{$user->count}}
+		<div class="text-center">
+			<img src="{{asset("img/logo.png")}}" alt="Marathonradio">
+		</div>
+		<div class="row" style="margin-top:20px;">
+			<div class="col-md-4">
+				<div class="well">
+					<h1>{{$totalTweetCount}}</h1>
+					<h3>tweets met #marathonradio</h3>
 				</div>
-				@endforeach
+			</div>
+
+			<div class="col-md-4 col-md-push-4">
+				<div class="well">
+					<h1>{{$totalUserCount}}</h1>
+					<h3>twitteraars posten #marathonradio</h3>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-md-pull-4">
+				<div class="well">
+					<ul class="list-group">
+						<h2 class="text-center" style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+						@foreach($usersWithMostHashtags as $user)
+							<li class="list-group-item">
+								<a href="https://twitter.com/{{$user->username}}">&commat;{{$user->username}}</a>
+								<span class="badge">{{$user->count}} tweets</span>
+							</li>
+						@endforeach
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

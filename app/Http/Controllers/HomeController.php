@@ -20,8 +20,11 @@ class HomeController extends Controller
 					                ->take(300)
 					                ->get();
 
+		$totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
 
-		return view('index', compact('usersWithMostHashtags'));
+		$totalTweetCount = Tweet::count();
+
+		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount'));
 	}
 
 	private function getTweetsWithTag($tag, $max_id = null){
