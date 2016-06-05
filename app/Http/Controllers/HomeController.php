@@ -14,6 +14,7 @@ class HomeController extends Controller
 
 		$max_id = null;
 		$reachedOldTweets = false;
+		$highestTweetId = DB::table('orders')->max('tweet_id');
 
 		do {
 
@@ -26,8 +27,7 @@ class HomeController extends Controller
 
 				echo $tweet->id;
 				// Check if we've reached old tweets
-				$oldTweets = Tweet::where('tweet_id', '>=', $tweet->id)->get();
-				if($oldTweets->count()) {
+				if($tweet->id <= $highestTweetId) {
 					$reachedOldTweets = true;
 					echo "reached old tweets<br/>";
 					break; // jump out of foreach
