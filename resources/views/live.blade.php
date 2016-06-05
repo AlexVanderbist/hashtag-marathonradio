@@ -51,6 +51,11 @@
 			</div>
 			<div class="col-md-4">
 				<div class="well">
+					<div class="profileImg julie"></div>
+					<h1 id="julieCount">Laden...</h1>
+					<h3>tweets tijdens Julie</h3>
+				</div>
+				<div class="well">
 					<div class="profileImg tom"></div>
 					<h1 id="tomCount">Laden...</h1>
 					<h3>tweets tijdens Tom</h3>
@@ -59,11 +64,6 @@
 					<div class="profileImg peter"></div>
 					<h1 id="peterCount">Laden...</h1>
 					<h3>tweets tijdens Peter</h3>
-				</div>
-				<div class="well">
-					<div class="profileImg julie"></div>
-					<h1 id="julieCount">Laden...</h1>
-					<h3>tweets tijdens Julie</h3>
 				</div>
 			</div>
 			<div class="col-md-4">
