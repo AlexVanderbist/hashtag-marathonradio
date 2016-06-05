@@ -16,6 +16,7 @@ class HomeController extends Controller
 		$max_id = null;
 		$reachedOldTweets = false;
 		$highestTweetId = DB::table('tweets')->max('tweet_id');
+		$highestTweetId = ($highestTweetId == null ? 0 : $highestTweetId);
 
 		do {
 
@@ -45,7 +46,7 @@ class HomeController extends Controller
 					'tweet' => $tweet->text,
 					'tweeted_at' => $tweet->created_at
 				])->save();
-				
+
 				echo "saved tweet<br/>";
 
 				// set highest tweet for next query
