@@ -62,13 +62,14 @@ class Kernel extends ConsoleKernel
 
 					// Count new tweet this schedule
 					$numTweetsPostedThisSchedule++;
-
+					$formattedTweetedAt = Carbon::parse($tweet->created_at);
+					$formattedTweetedAt->setTimezone('Europe/Brussels');
 					$newTweet->fill([
 						'user_id' => $tweet->user->id,
 						'username' => $tweet->user->screen_name,
 						'full_name' => $tweet->user->name,
 						'tweet' => $tweet->text,
-						'tweeted_at' => Carbon::parse($tweet->created_at),
+						'tweeted_at' => $formattedTweetedAt,
 						'image' => $tweet->user->profile_image_url
 					])->save();
 
