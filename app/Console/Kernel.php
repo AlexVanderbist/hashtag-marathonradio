@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Twitter;
 use App\Tweet;
+use App\TweetsPerSchedule;
 use DB;
 use Carbon\Carbon;
 
@@ -80,7 +81,7 @@ class Kernel extends ConsoleKernel
 			} while (!empty($tweets->statuses) && !$reachedOldTweets);
 
 			// loading tweets done, now save the scheulde tweet count to db
-			TweetsPerSchedule:create(['num_tweets' => $numTweetsPostedThisSchedule]);
+			TweetsPerSchedule::create(['num_new_tweets' => $numTweetsPostedThisSchedule]);
 
 
         })->everyMinute();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Twitter;
 use App\Tweet;
+use App\TweetsPerSchedule;
 use DB;
 
 class HomeController extends Controller
@@ -24,8 +25,7 @@ class HomeController extends Controller
 
 		$totalTweetCount = Tweet::count();
 
-		$tweetsLastMinute = Tweet::where()
-
+//		$tweetsLastMinute = Tweet::where()
 		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount'));
 	}
 
