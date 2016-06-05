@@ -45,14 +45,16 @@ class Kernel extends ConsoleKernel
 					}
 
 					// If it's a new tweet, add it
-					$newTweet = Tweet::create([
-						'tweet_id' => $tweet->id,
+					$newTweet = Tweet::firstOrNew([
+						'tweet_id' => $tweet->id
+					]);
+					$newTweet->fill([
 						'user_id' => $tweet->user->id,
 						'username' => $tweet->user->screen_name,
 						'full_name' => $tweet->user->name,
 						'tweet' => $tweet->text,
 						'tweeted_at' => $tweet->created_at
-					]);
+					])->save();
 
 					// set highest tweet for next query
 					$max_id = $tweet->id;
