@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Twitter;
+use App\Tweet;
+use DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,19 +31,23 @@ class Kernel extends ConsoleKernel
 
 			$max_id = null;
 			$reachedOldTweets = false;
+			$highestTweetId = DB::table('tweets')->max('tweet_id');
+			$highestTweetId = ($highestTweetId == null ? 0 : $highestTweetId);
 
 			do {
 
 				// fetch tweets
 				$tweets = Twitter::getSearch(['q' => '#marathonradio', 'count' => 100, 'max_id' => $max_id, 'since_id' => 739003964088291328]);
 
+				echo "loaded new tweets<br/>";
 				// loop through tweets
 				foreach ($tweets->statuses as $tweet) {
 
+					echo $tweet->id;
 					// Check if we've reached old tweets
-					$oldTweets = Tweet::where('tweet_id', '>=', $tweet->id)->get();
-					if($oldTweets->count()) {
+					if($tweet->id <= $highestTweetId) {
 						$reachedOldTweets = true;
+						echo "reached old tweets<br/>";
 						break; // jump out of foreach
 					}
 
@@ -56,10 +63,12 @@ class Kernel extends ConsoleKernel
 						'tweeted_at' => $tweet->created_at
 					])->save();
 
+					echo "saved tweet<br/>";
+
 					// set highest tweet for next query
 					$max_id = $tweet->id;
 				}
-				echo "saved<br/>";
+				echo "end<br/>";
 			} while (!empty($tweets->statuses) && !$reachedOldTweets);
 
 
