@@ -40,13 +40,13 @@
 					<h3>tweets met #marathonradio</h3>
 				</div>
 				<div class="well">
+					<h1 id="totalUserCount">Laden...</h1>
+					<h3>twitteraars posten met #marathonradio</h3>
+				</div>
+				<div class="well">
 					<h1 id="tpm">Laden...</h1>
 					<h3>tweets per minuut</h3>
 					<small>Da's <span id="tps">0</span> tweets per seconde!</small>
-				</div>
-				<div class="well">
-					<h1 id="totalUserCount">Laden...</h1>
-					<h3>twitteraars posten met #marathonradio</h3>
 				</div>
 			</div>
 			<div class="col-md-4">
