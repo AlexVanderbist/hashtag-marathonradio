@@ -12,6 +12,7 @@ class Tweet extends Model
 		'username',
 		'full_name',
 		'tweet',
-		'tweeted_at'
+		'tweeted_at',
+		'image'
 	];
 }

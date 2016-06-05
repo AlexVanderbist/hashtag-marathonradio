@@ -60,7 +60,8 @@ class Kernel extends ConsoleKernel
 						'username' => $tweet->user->screen_name,
 						'full_name' => $tweet->user->name,
 						'tweet' => $tweet->text,
-						'tweeted_at' => $tweet->created_at
+						'tweeted_at' => $tweet->created_at,
+						'image' => $tweet->user->profile_image_url
 					])->save();
 
 					echo "saved tweet<br/>";
