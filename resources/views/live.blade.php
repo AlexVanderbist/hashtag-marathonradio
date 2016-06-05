@@ -68,8 +68,8 @@
 			</div>
 			<div class="col-md-4">
 				<div class="well">
-					<h2 class="text-center" style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
-					<ul class="list-group scrollable" id="usersWithMostHashtags">
+					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>
 				</div>
 			</div>
