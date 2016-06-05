@@ -9,6 +9,9 @@ $(function() {
 			$('#tpm').html(data.tpm);
 			$('#tps').html(parseFloat(data.tps).toFixed(2));
 			$('#totalUserCount').html(data.totalUserCount);
+			$('#peterCount').html(data.tweetsPerPerson.peter);
+			$('#tomCount').html(data.tweetsPerPerson.tom);
+			$('#julieCount').html(data.tweetsPerPerson.julie);
 
 			$('#usersWithMostHashtags').empty();
 			$.each(data.usersWithMostHashtags, function( key, value ){

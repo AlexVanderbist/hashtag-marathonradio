@@ -23,8 +23,8 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div class="container">
-		<div class="row text-center">
+	<div class="container text-center">
+		<div class="row">
 			<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
 			<p>De onofficiële #marathonradio statistieken!</p>
 
@@ -34,7 +34,7 @@
 
 		</div>
 		<div class="row" style="margin-top:20px;">
-			<div class="col-md-4 text-center">
+			<div class="col-md-4">
 				<div class="well">
 					<h1 id="totalTweetCount">Laden...</h1>
 					<h3>tweets met #marathonradio</h3>
@@ -44,16 +44,29 @@
 					<h3>tweets per minuut</h3>
 					<small>Da's <span id="tps">0</span> tweets per seconde!</small>
 				</div>
-			</div>
-
-			<div class="col-md-4 col-md-push-4 text-center">
 				<div class="well">
 					<h1 id="totalUserCount">Laden...</h1>
 					<h3>twitteraars posten met #marathonradio</h3>
 				</div>
 			</div>
-
-			<div class="col-md-4 col-md-pull-4">
+			<div class="col-md-4">
+				<div class="well">
+					<div class="profileImg tom"></div>
+					<h1 id="tomCount">Laden...</h1>
+					<h3>tweets tijdens Tom</h3>
+				</div>
+				<div class="well">
+					<div class="profileImg peter"></div>
+					<h1 id="peterCount">Laden...</h1>
+					<h3>tweets tijdens Peter</h3>
+				</div>
+					<div class="profileImg julie"></div>
+				<div class="well">
+					<h1 id="julieCount">Laden...</h1>
+					<h3>tweets tijdens Julie</h3>
+				</div>
+			</div>
+			<div class="col-md-4">
 				<div class="well">
 					<h2 class="text-center" style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
 					<ul class="list-group scrollable" id="usersWithMostHashtags">
