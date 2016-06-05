@@ -95,7 +95,7 @@ $(function() {
 		$.get("/data", function(data) {
 			$('#totalTweetCount').html(data.totalTweetCount);
 			$('#tpm').html(data.tpm);
-			$('#tps').html(data.tps);
+			$('#tps').html(parseFloat(data.tps).toFixed(2));
 			$('#totalUserCount').html(data.totalUserCount);
 
 			$('#usersWithMostHashtags').empty();
