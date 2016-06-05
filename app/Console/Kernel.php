@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
 					]);
 
 					// Count new tweet this schedule
-					if(! $newTweet->id) $numTweetsPostedThisSchedule++;
+					$numTweetsPostedThisSchedule++;
 
 					$newTweet->fill([
 						'user_id' => $tweet->user->id,
