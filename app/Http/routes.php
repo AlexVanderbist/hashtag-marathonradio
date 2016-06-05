@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/static', [
-    'as' => 'home', 'uses' => 'HomeController@index'
-]);
 Route::get('/', [
     'as' => 'live', 'uses' => 'HomeController@live'
 ]);
+
+Route::get('/gen', [
+    'as' => 'generate', 'uses' => 'DataController@generateWords'
+]);
+
 Route::get('/data', [
     'as' => 'data',
 	'uses' => 'DataController@getData',

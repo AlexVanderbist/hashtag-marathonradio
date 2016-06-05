@@ -12,6 +12,38 @@ use DB;
 
 class DataController extends Controller
 {
+	public function generateWords() {
+		$allTweets = Tweet::all();
+
+		foreach ($allTweets as $key => $tweet) {
+			
+		}
+	}
+
+	function extract_common_words($string, $max_count = 5) {
+		$string = preg_replace('/ss+/i', '', $string);
+		$string = trim($string); // trim the string
+		$string = preg_replace('/[^a-zA-Z -]/', '', $string); // only take alphabet characters, but keep the spaces and dashes too…
+		$string = strtolower($string); // make it lowercase
+
+		preg_match_all('/\b.*?\b/i', $string, $match_words);
+		$match_words = $match_words[0];
+
+		foreach ( $match_words as $key => $item ) {
+			if ( $item == '' || in_array(strtolower($item), config('stopwords')) || strlen($item) <= 3 ) {
+				unset($match_words[$key]);
+			}
+		}
+
+		$word_count = str_word_count( implode(" ", $match_words) , 1);
+		$frequency = array_count_values($word_count);
+		arsort($frequency);
+
+		//arsort($word_count_arr);
+		$keywords = array_slice($frequency, 0, $max_count);
+		return $keywords;
+	}
+
     public function getData() {
 
 		$usersWithMostHashtags = DB::table('tweets')
