@@ -27,7 +27,7 @@
 		<div class="text-center">
 			<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
 			<p>De onofficiële #marathonradio statistieken!</p>
-			<small>Teller loop sinds 5 juni 2016 en vernieuwt elke minuut.</small>
+			<small>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.</small>
 		</div>
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-4 text-center">
