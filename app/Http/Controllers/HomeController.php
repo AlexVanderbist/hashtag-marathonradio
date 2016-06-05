@@ -25,8 +25,10 @@ class HomeController extends Controller
 
 		$totalTweetCount = Tweet::count();
 
-//		$tweetsLastMinute = Tweet::where()
-		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount'));
+		$tpm = TweetsPerSchedule::all()->last()->num_new_tweets;
+		$tps = $tpm / 60;
+
+		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
 
 	private function getTweetsWithTag($tag, $max_id = null){

@@ -35,6 +35,11 @@
 					<h1>{{$totalTweetCount}}</h1>
 					<h3>tweets met #marathonradio</h3>
 				</div>
+				<div class="well">
+					<h1>{{$tpm}}</h1>
+					<h3>tweets per minuut</h3>
+					<small>Da's {{$tps}} tweets per seconde!</small>
+				</div>
 			</div>
 
 			<div class="col-md-4 col-md-push-4 text-center">
