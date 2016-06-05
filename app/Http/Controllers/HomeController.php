@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Twitter;
 use App\Tweet;
+use DB;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
 
 		$max_id = null;
 		$reachedOldTweets = false;
-		$highestTweetId = DB::table('orders')->max('tweet_id');
+		$highestTweetId = DB::table('tweets')->max('tweet_id');
 
 		do {
 
