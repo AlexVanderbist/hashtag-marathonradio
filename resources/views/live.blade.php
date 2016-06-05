@@ -60,8 +60,8 @@
 					<h1 id="peterCount">Laden...</h1>
 					<h3>tweets tijdens Peter</h3>
 				</div>
-					<div class="profileImg julie"></div>
 				<div class="well">
+					<div class="profileImg julie"></div>
 					<h1 id="julieCount">Laden...</h1>
 					<h3>tweets tijdens Julie</h3>
 				</div>
