@@ -20,6 +20,7 @@ class HomeController extends Controller
 			// fetch tweets
 			$tweets = Twitter::getSearch(['q' => '#marathonradio', 'count' => 100, 'max_id' => $max_id, 'since_id' => 739003964088291328]);
 
+			echo "loaded new tweets<br/>";
 			// loop through tweets
 			foreach ($tweets->statuses as $tweet) {
 
@@ -27,6 +28,7 @@ class HomeController extends Controller
 				$oldTweets = Tweet::where('tweet_id', '>=', $tweet->id)->get();
 				if($oldTweets->count()) {
 					$reachedOldTweets = true;
+					echo "reached old tweets<br/>";
 					break; // jump out of foreach
 				}
 
@@ -39,11 +41,12 @@ class HomeController extends Controller
 					'tweet' => $tweet->text,
 					'tweeted_at' => $tweet->created_at
 				]);
+				echo "saved tweet<br/>";
 
 				// set highest tweet for next query
 				$max_id = $tweet->id;
 			}
-			echo "saved<br/>";
+			echo "end<br/>";
 		} while (!empty($tweets->statuses) && !$reachedOldTweets);
 
 
