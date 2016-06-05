@@ -35,39 +35,40 @@
 		</div>
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-4">
-				<div class="well">
+				<div class="well well-sm">
 					<h1 id="totalTweetCount">Laden...</h1>
 					<h3>tweets met #marathonradio</h3>
 				</div>
-				<div class="well">
+				<div class="well well-sm">
 					<h1 id="totalUserCount">Laden...</h1>
 					<h3>twitteraars posten met #marathonradio</h3>
 				</div>
-				<div class="well">
+				<div class="well well-sm">
 					<h1 id="tpm">Laden...</h1>
 					<h3>tweets per minuut</h3>
 					<small>Da's <span id="tps">0</span> tweets per seconde!</small>
+					<canvas id="tpmChart" width="400" height="400"></canvas>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="well">
+				<div class="well well-sm">
 					<div class="profileImg julie"></div>
 					<h1 id="julieCount">Laden...</h1>
 					<h3>tweets tijdens Julie</h3>
 				</div>
-				<div class="well">
+				<div class="well well-sm">
 					<div class="profileImg tom"></div>
 					<h1 id="tomCount">Laden...</h1>
 					<h3>tweets tijdens Tom</h3>
 				</div>
-				<div class="well">
+				<div class="well well-sm">
 					<div class="profileImg peter"></div>
 					<h1 id="peterCount">Laden...</h1>
 					<h3>tweets tijdens Peter</h3>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="well">
+				<div class="well well-sm">
 					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
 					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>
@@ -83,7 +84,8 @@
 		</div>
 	</footer>
 
-	<script src="{{asset("js/app.js")}}"></script>
+		<script src="{{asset("js/vendor.js")}}"></script>
+		<script src="{{asset("js/app.js")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>

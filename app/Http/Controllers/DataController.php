@@ -25,8 +25,9 @@ class DataController extends Controller
 
 		$totalTweetCount = Tweet::count();
 
-		$tpm = TweetsPerSchedule::all()->last()->num_new_tweets;
-		$tps = $tpm / 60;
+		$tpm = TweetsPerSchedule::orderBy('id','desc')->take(10)->get();
+		//dd($tpm);
+		$tps = $tpm->first()->num_new_tweets / 60;
 
 		$schedule = [
 			[
