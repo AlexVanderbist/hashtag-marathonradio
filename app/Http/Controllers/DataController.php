@@ -10,9 +10,9 @@ use App\Tweet;
 use App\TweetsPerSchedule;
 use DB;
 
-class HomeController extends Controller
+class DataController extends Controller
 {
-    public function index() {
+    public function getData() {
 
 		$usersWithMostHashtags = DB::table('tweets')
 					                ->select(DB::raw('username'), DB::raw('count(*) as count'))
@@ -28,10 +28,6 @@ class HomeController extends Controller
 		$tpm = TweetsPerSchedule::all()->last()->num_new_tweets;
 		$tps = $tpm / 60;
 
-		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
-	}
-
-	public function live() {
-		return view('live');
+		return response()->json(compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
 }
