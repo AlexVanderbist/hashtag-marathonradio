@@ -24,6 +24,7 @@ class HomeController extends Controller
 			// loop through tweets
 			foreach ($tweets->statuses as $tweet) {
 
+				echo $tweet->id;
 				// Check if we've reached old tweets
 				$oldTweets = Tweet::where('tweet_id', '>=', $tweet->id)->get();
 				if($oldTweets->count()) {
