@@ -24,6 +24,8 @@ class HomeController extends Controller
 
 		$totalTweetCount = Tweet::count();
 
+		$tweetsLastMinute = Tweet::where()
+
 		return view('index', compact('usersWithMostHashtags', 'totalTweetCount', 'totalUserCount'));
 	}
 

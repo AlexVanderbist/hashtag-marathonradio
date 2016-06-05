@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Twitter;
 use App\Tweet;
 use DB;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -33,6 +34,7 @@ class Kernel extends ConsoleKernel
 			$reachedOldTweets = false;
 			$highestTweetId = DB::table('tweets')->max('tweet_id');
 			$highestTweetId = ($highestTweetId == null ? 0 : $highestTweetId);
+			$numTweetsPostedThisSchedule = 0;
 
 			do {
 
@@ -51,16 +53,21 @@ class Kernel extends ConsoleKernel
 						break; // jump out of foreach
 					}
 
+
 					// If it's a new tweet, add it
 					$newTweet = Tweet::firstOrNew([
 						'tweet_id' => $tweet->id
 					]);
+
+					// Count new tweet this schedule
+					if(! $newTweet->exists) $numTweetsPostedThisSchedule++;
+
 					$newTweet->fill([
 						'user_id' => $tweet->user->id,
 						'username' => $tweet->user->screen_name,
 						'full_name' => $tweet->user->name,
 						'tweet' => $tweet->text,
-						'tweeted_at' => $tweet->created_at,
+						'tweeted_at' => Carbon::parse($tweet->created_at),
 						'image' => $tweet->user->profile_image_url
 					])->save();
 
@@ -71,6 +78,9 @@ class Kernel extends ConsoleKernel
 				}
 				echo "end<br/>";
 			} while (!empty($tweets->statuses) && !$reachedOldTweets);
+
+			// loading tweets done, now save the scheulde tweet count to db
+			TweetsPerSchedule:create(['num_tweets' => $numTweetsPostedThisSchedule]);
 
 
         })->everyMinute();
