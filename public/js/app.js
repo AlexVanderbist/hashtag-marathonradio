@@ -4,7 +4,7 @@ $(function() {
 	var tpmChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
-			labels: ['-10min', '','-8min','','-6min', '','-4min','','-2min',''],
+			labels: ['-50sec', '','-40sec','','-30sec', '','-20sec','','-10sec',''],
 			datasets: [
 				{
 		            fill: true,
