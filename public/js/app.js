@@ -52,13 +52,13 @@ $(function() {
 	setInterval(loadTweetsPerMinute, 5000);
 
 	function loadTweetsPerMinute() {
-							tpmChart.data.datasets[0].data.push(Math.random() * 3);
-				tpmChart.data.datasets[0].data.shift();
-	//			tpmChart.data.datasets[0].data.push(data.tpm);
-				tpmChart.update(0);
 		$.get("/tpm", function(data) {
 			//date.tweetsPerSchedule
 
+			//tpmChart.data.datasets[0].data.push(Math.random() * 3);
+			tpmChart.data.datasets[0].data.push(data.tpm);
+			tpmChart.data.datasets[0].data.shift();
+			tpmChart.update(0);
 		});
 	}
 
