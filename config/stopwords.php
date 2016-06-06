@@ -32,6 +32,7 @@ return [
 	'toch',
 	'alle',
 	'alles',
+	'meer',
 
 	// english
 

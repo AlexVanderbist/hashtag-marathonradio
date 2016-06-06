@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\FixTweetDates::class,
+	    Commands\GemerateWordOccurences::class,
     ];
 
     /**
@@ -29,7 +30,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-		//$schedule->call()->;
+		$schedule->command('tweets:generateoccurences')->everyTenMinutes;
 
 		$schedule->call(function () {
 
