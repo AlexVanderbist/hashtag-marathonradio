@@ -151,8 +151,8 @@
 		}(document, "script", "twitter-wjs"));
 	</script>
 
-	<script src="{{asset("js/vendor.js")}}"></script>
-	<script src="{{asset("js/app.js")}}"></script>
+	<script src="{{asset("js/vendor.js?v=1")}}"></script>
+	<script src="{{asset("js/app.js?v=1")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
