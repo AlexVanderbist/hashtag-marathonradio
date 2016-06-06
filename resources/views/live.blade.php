@@ -26,7 +26,7 @@
 	<div class="container text-center" id="mainContainer">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
+				<img src="{{asset("img/logo.png")}}" class="pull-left" alt="Marathonradio" id="logo">
 				<p>De onofficiële #marathonradio statistieken!</p>
 
 				<div>
