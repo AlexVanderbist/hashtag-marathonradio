@@ -17,6 +17,7 @@ class DataController extends Controller
 	public function getTweetsPerMinute() {
 		$schedules = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
 		$tpm = $schedules->sum('num_new_tweets');
+		return $tpm;
 		return response()->json(compact('tpm'));
 	}
 
