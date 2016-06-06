@@ -17,8 +17,11 @@ h1, h2 {
 }
 
 .scrollable {
-	max-height: 500px;
+	max-height: 400px;
 	overflow-y: auto;
+}
+.scrollable-sm {
+	max-height: 250px;
 }
 
 .profileImg {

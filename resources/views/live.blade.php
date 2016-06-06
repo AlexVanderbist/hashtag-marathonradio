@@ -83,7 +83,15 @@
 					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>
 				</div>
+				<div class="well well-sm">
+					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorkomende woorden</h2>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
+					</ul>
+				</div>
 			</div>
+
+
+
 			<div class="col-md-3" id="tweetCol" style="display:none;">
 				<div class="well well-sm">
 					<h1>Live tweets</h1>

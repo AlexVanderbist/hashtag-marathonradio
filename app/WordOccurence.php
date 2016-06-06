@@ -12,4 +12,14 @@ class WordOccurence extends Model
 		'word',
 		'occurences'
 	];
+
+	// protected $appends = ['weight', 'text'];
+	//
+	// public function getWeightAttribute(){
+	//     return $this->attributes['occurences'];
+	// }
+	//
+	// public function getTextAttribute(){
+	//     return $this->attributes['word'];
+	// }
 }

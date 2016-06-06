@@ -32,6 +32,8 @@ class DataController extends Controller
 		//dd($tpm);
 		$tps = $tpm->first()->num_new_tweets / 60;
 
+		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
+
 		$schedule = [
 			[
 				'name' => 'julie',
@@ -70,6 +72,6 @@ class DataController extends Controller
 			$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at', [$schedule['start'], $schedule['stop']])->get()->count();
 		}
 
-		return response()->json(compact('tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
+		return response()->json(compact('wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
 }

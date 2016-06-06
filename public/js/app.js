@@ -35,7 +35,6 @@ $(function() {
 	    }
 	});
 
-
 	setInterval(loadNewData, 60000);
 
 	function loadNewData () {
@@ -49,6 +48,8 @@ $(function() {
 			$('#julieCount').html(data.tweetsPerPerson.julie);
 			$('#tpm').html(data.tpm[0].num_new_tweets);
 
+
+			// Users with most hashtags
 			$('#usersWithMostHashtags').empty();
 			$.each(data.usersWithMostHashtags, function( key, value ){
 				var $newLi = $('<li/>')
@@ -67,9 +68,21 @@ $(function() {
 				$('#usersWithMostHashtags').append($newLi);
 			});
 
+			// Most occuring words
+			$('#wordOccurences').empty();
+			$.each(data.wordOccurences, function( key, value ){
+				var $newLi = $('<li/>')
+							.addClass('list-group-item')
+							.html(value.word);
+
+				$('#wordOccurences').append($newLi);
+			});
+
+			// Last refresh
 			moment.locale('nl');
 			$('#lastRefresh').html(moment().format('LTS'));
 
+			// Tweets per minute graph
 			$.each(data.tpm, function(key, value) {
 				tpmChart.data.datasets[0].data[data.tpm.length-1 - key] = value.num_new_tweets;
 			});
