@@ -157,6 +157,13 @@ $(function() {
 		}
 	});
 
+	function updateTwitterValues(share_url, title) {
+		// clear out the <a> tag that's currently there...probably don't really need this since you're replacing whatever is in there already.
+		$("#twitterBtn").html('&nbsp;');
+		$("#twitterBtn").html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + share_url +'" data-size="large" data-text="' + title + '" data-count="none">Tweet</a>');
+		window.twttr.widgets.load();
+	}
+
 	// Search
 	$( "#search" ).keyup(function( event ) {
 
@@ -166,6 +173,8 @@ $(function() {
 		if (user) {
 			$('#noResults').hide();
 			$('#searchResult .profileImg').css('background-image', 'url(' + user.image + ')');
+			updateTwitterValues('http://www.hashtagmarathonradio.be/', "Ik sta op de "+numeral(index+1).format('0o')+" plaats in de #marathonradio top 500!");
+			//$('.twitter-share-button').attr('href', "https://twitter.com/intent/tweet?text=" + escape("Ik sta op de "+(index+1)+" plaats in de #marathonradio top 500!"));
 			$('#searchPos').html(numeral(index+1).format('0o'));
 			$('#searchResult').show();
 	  	} else {

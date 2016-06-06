@@ -84,19 +84,25 @@
 			</div>
 			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
+					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+
+
 					<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
 					<div id="searchResult" style="display:none;">
-						<div class="profileImg"></div>
-						<h3>Proficiat, je staat op de</h3>
-						<h1><span id="searchPos"></span> plaats!</h1>
+						<div>
+							<div class="profileImg"></div>
+							<h1><span id="searchPos"></span> plaats!</h1>
+							<div class="clearfix"></div>
+						</div>
+						<h3>Proficiat! Deel je overwinning:</h3>
+						<div id="twitterBtn"></div>
 					</div>
 					<div id="noResults" style="display:none;">
 						<h3>Helaas, je staat niet in de top 500 :(</h3>
 					</div>
-				</div>
-				<div class="well well-sm">
-					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
-					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
+
+
+					<ul style="margin-top:15px;" class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>
 				</div>
 			</div>
@@ -112,18 +118,8 @@
 						data-widget-id="739618451384307712"
             			data-chrome="nofooter noheader noborders transparent"
 						>
-						Tweets over #marathonradio OR @mnmBE OR @petervandeveire OR @tomdecock OR @julievdsteen</a>
-					<script>
-						!function(d,s,id){
-							var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-							if(!d.getElementById(id)){
-								js=d.createElement(s);
-								js.id=id;
-								js.src=p+"://platform.twitter.com/widgets.js";
-								fjs.parentNode.insertBefore(js,fjs);
-							}
-						}(document,"script","twitter-wjs");
-					</script>
+						Tweets over #marathonradio OR @mnmBE OR @petervandeveire OR @tomdecock OR @julievdsteen
+					</a>
 				</div>
 			</div>
 		</div>
@@ -135,6 +131,25 @@
 			<small>Gemaakt door <a target="_blank" href="https://twitter.com/AlexVanderbist">&commat;AlexVanderbist</a></small>
 		</div>
 	</footer>
+
+	<script>
+		window.twttr = (function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0],
+			t = window.twttr || {};
+			if (d.getElementById(id)) return t;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js, fjs);
+
+			t._e = [];
+			t.ready = function(f) {
+				t._e.push(f);
+			};
+
+			return t;
+		}(document, "script", "twitter-wjs"));
+	</script>
 
 	<script src="{{asset("js/vendor.js")}}"></script>
 	<script src="{{asset("js/app.js")}}"></script>
