@@ -88,8 +88,6 @@ $(function() {
 
 	var usersWithMostHashtags = {};
 	function loadNewData () {
-		
-		loadTweetsPerMinute();
 
 		console.log('loading new data');
 		$.get("/data", function(data) {
@@ -100,6 +98,11 @@ $(function() {
 			$('#peterCount').html(data.tweetsPerPerson.peter);
 			$('#tomCount').html(data.tweetsPerPerson.tom);
 			$('#julieCount').html(data.tweetsPerPerson.julie);
+
+			// tpm
+			tpmChart.data.datasets[0].data.push(data.tpm);
+			tpmChart.data.datasets[0].data.shift();
+			tpmChart.update(0);
 
 
 			// Users with most hashtags
