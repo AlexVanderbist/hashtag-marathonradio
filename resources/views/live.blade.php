@@ -23,18 +23,28 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div class="container text-center">
+	<div class="container text-center" id="mainContainer">
 		<div class="row">
-			<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
-			<p>De onofficiële #marathonradio statistieken!</p>
+			<div class="col-md-6 col-md-offset-3">
+				<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
+				<p>De onofficiële #marathonradio statistieken!</p>
 
-			<small>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></small>
+				<div>
+					<button type="button" class="btn btn-sm btnToggleTweetCol" id="btnEnableTweetCol">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Live #marathonradio tweets weergeven
+					</button>
+					<button type="button" class="btn btn-sm btnToggleTweetCol" id="btnDisableTweetCol" style="display:none">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Live #marathonradio tweets verbergen
+					</button>
+				</div>
 
-			<button class="btn btn-primare btn-sm hidden" id="reloadBtn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> vernieuwen</button>
+				<small>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></small>
 
+				<button class="btn btn-primary btn-sm hidden" id="reloadBtn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> vernieuwen</button>
+			</div>
 		</div>
 		<div class="row" style="margin-top:20px;">
-			<div class="col-md-4">
+			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
 					<h1 id="totalTweetCount">Laden...</h1>
 					<h3>tweets met #marathonradio</h3>
@@ -50,7 +60,7 @@
 					<canvas id="tpmChart" width="400" height="400"></canvas>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
 					<div class="profileImg julie"></div>
 					<h1 id="julieCount">Laden...</h1>
@@ -67,11 +77,34 @@
 					<h3>tweets tijdens Peter</h3>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
 					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
 					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>
+				</div>
+			</div>
+			<div class="col-md-3" id="tweetCol" style="display:none;">
+				<div class="well well-sm">
+					<h1>Live tweets</h1>
+					<small>#marathonradio, @MNMbe, @petervandeveire, @tomdecock en @julievdsteen</small>
+					<a class="twitter-timeline"
+						href="https://twitter.com/search?q=%23marathonradio%20OR%20%40mnmBE%20OR%20%40petervandeveire%20OR%20%40tomdecock%20OR%20%40julievdsteen"
+						data-widget-id="739618451384307712"
+            			data-chrome="nofooter noheader noborders transparent"
+						>
+						Tweets over #marathonradio OR @mnmBE OR @petervandeveire OR @tomdecock OR @julievdsteen</a>
+					<script>
+						!function(d,s,id){
+							var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+							if(!d.getElementById(id)){
+								js=d.createElement(s);
+								js.id=id;
+								js.src=p+"://platform.twitter.com/widgets.js";
+								fjs.parentNode.insertBefore(js,fjs);
+							}
+						}(document,"script","twitter-wjs");
+					</script>
 				</div>
 			</div>
 		</div>
@@ -84,8 +117,8 @@
 		</div>
 	</footer>
 
-		<script src="{{asset("js/vendor.js")}}"></script>
-		<script src="{{asset("js/app.js")}}"></script>
+	<script src="{{asset("js/vendor.js")}}"></script>
+	<script src="{{asset("js/app.js")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>

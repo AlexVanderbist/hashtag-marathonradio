@@ -5768,4 +5768,11 @@ h1, h2 {
 .profileImg.peter {
   background-image: url("../img/peter.jpg"); }
 
+.well {
+  background-color: #FFFFFF;
+  border: 2px solid #CFEAF4; }
+
+.well.well-sm {
+  border-radius: 8px; }
+
 /*# sourceMappingURL=app.css.map */
