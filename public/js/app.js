@@ -27,7 +27,8 @@ $(function() {
 	        scales: {
 	            yAxes: [{
 	                ticks: {
-	                    beginAtZero:true
+	                    beginAtZero:true,
+						suggestedMax: 10
 	                }
 	            }],
 	        }
@@ -79,74 +80,6 @@ $(function() {
 	loadNewData();
 
 	$('#reloadBtn').on("click", loadNewData);
-
-	// Refresh tweets evert x seconds
-	// window.twttr.ready(function (twttr) {
-	//
-	//     window.twttr.widgets.load();
-	//     setInterval(function() {
-	//         window.twttr.widgets.load();
-	//         console.log("update twitter timeline each second");
-	//     }, 1000);
-	//
-	// });
-
-	function do_twitter_widget(search_query, title, subtitle) {
-	  if (!window.widgetRef) {
-	    window.widgetRef = new TWTR.Widget({
-	      version: 2,
-	      type: 'search',
-	      search: search_query,
-	      interval: 6000,
-	      title: title || 'Tweets related to',
-	      subject: subtitle || search_query,
-	      width: 'auto',
-	      height: 500,
-	      theme: {
-	        shell: {
-	          background: '#8EC1DA',
-	          color: '#FFFFFF'
-	        },
-	        tweets: {
-	          background: '#FFFFFF',
-	          color: '#444444',
-	          links: '#1985B5'
-	        }
-	      },
-	      features: {
-	        scrollbar: false,
-	        loop: true,
-	        live: true,
-	        hashtags: true,
-	        timestamp: true,
-	        avatars: true,
-	        behavior: 'default'
-	      },
-	      ready: function() {
-	        // when done rendering...
-	      }
-	    });
-
-	    window.widgetRef
-	      .render()
-	      .start();
-	  }
-	  else {
-	    if (search_query != window.old_twitter_search) {
-	      window.widgetRef
-	        .stop()
-	        .setSearch(search_query)
-	        .setTitle(title || 'Tweets related to')
-	        .setCaption(subtitle || search_query)
-	        .render()
-	        .start();
-	    }
-	  }
-
-	  window.old_twitter_search = search_query;
-
-	  return window.widgetRef;
-	}
 
 	// Tweetbar code
 	var displayTweetCol = false;

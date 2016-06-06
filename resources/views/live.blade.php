@@ -57,7 +57,7 @@
 					<h1 id="tpm">Laden...</h1>
 					<h3>tweets per minuut</h3>
 					<small>Da's <span id="tps">0</span> tweets per seconde!</small>
-					<canvas id="tpmChart" width="400" height="400"></canvas>
+					<canvas id="tpmChart" width="400" height="250"></canvas>
 				</div>
 			</div>
 			<div class="col-md-4 resizeColumn">
