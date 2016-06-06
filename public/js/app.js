@@ -30,7 +30,7 @@ $(function() {
 	            yAxes: [{
 	                ticks: {
 	                    beginAtZero:true,
-						//suggestedMax: 10
+						suggestedMax: 5
 	                }
 	            }],
 	        }
