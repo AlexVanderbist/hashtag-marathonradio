@@ -14,6 +14,12 @@ use DB;
 class DataController extends Controller
 {
 
+	public function getTweetsPerSchedule() {
+		$tweetsPerSchedule = TweetsPerSchedule::all()->last();
+
+		return response()->json(compact('tweetsPerSchedule'));
+	}
+
 
     public function getData() {
 
@@ -28,9 +34,9 @@ class DataController extends Controller
 
 		$totalTweetCount = Tweet::count();
 
-		$tpm = TweetsPerSchedule::orderBy('id','desc')->take(10)->get();
 		//dd($tpm);
-		$tps = $tpm->first()->num_new_tweets / 60;
+		$tweetsPerSchedule = TweetsPerSchedule::all()->last();
+		$tps = $tweetsPerSchedule->num_new_tweets / 5;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
 

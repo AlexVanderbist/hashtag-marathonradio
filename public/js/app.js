@@ -36,6 +36,18 @@ $(function() {
 	});
 
 	setInterval(loadNewData, 60000);
+	setInterval(loadTweetsPerSchedule, 5000);
+
+	function loadTweetsPerSchedule() {
+		$.get("/tweets-per-schedule", function(data) {
+			//date.tweetsPerSchedule
+
+			// Tweets per minute graph
+			tpmChart.addData(data.tweetsPerSchedule.num_new_tweets, 'lol');
+			tpmChart.removeData();
+
+		});
+	}
 
 	function loadNewData () {
 		console.log('loading new data');
@@ -81,12 +93,6 @@ $(function() {
 			// Last refresh
 			moment.locale('nl');
 			$('#lastRefresh').html(moment().format('LTS'));
-
-			// Tweets per minute graph
-			$.each(data.tpm, function(key, value) {
-				tpmChart.data.datasets[0].data[data.tpm.length-1 - key] = value.num_new_tweets;
-			});
-		    tpmChart.update();
 		});
 	}
 

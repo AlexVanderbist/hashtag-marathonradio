@@ -24,3 +24,9 @@ Route::get('/data', [
 	'uses' => 'DataController@getData',
 	'middleware' => 'api'
 ]);
+
+Route::get('/tweets-per-schedule', [
+    'as' => 'tweetsperschedule',
+	'uses' => 'DataController@getTweetsPerSchedule',
+	'middleware' => 'api'
+]);
