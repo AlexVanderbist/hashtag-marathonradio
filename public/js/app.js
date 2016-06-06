@@ -1,10 +1,12 @@
 $(function() {
 
 	var ctx = document.getElementById("tpmChart");
+	var labels = new Array(60).fill('');
+	var startData = new Array(60).fill(0);
 	var tpmChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
-			labels: ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+			labels: labels,
 			datasets: [
 				{
 		            fill: true,
@@ -16,7 +18,7 @@ $(function() {
 		            borderDashOffset: 0.0,
 		            borderJoinStyle: 'miter',
 		            pointRadius: 0,
-					data: [0,0,0,0,0,0,0,0,0,0]
+					data: startData,
 				}
 			],
 		},
@@ -28,24 +30,22 @@ $(function() {
 	            yAxes: [{
 	                ticks: {
 	                    beginAtZero:true,
-						suggestedMax: 10
+						//suggestedMax: 10
 	                }
 	            }],
 	        }
 	    }
 	});
 
-	setInterval(loadNewData, 10000);
-	setInterval(loadTweetsPerSchedule, 5000);
+	setInterval(loadNewData, 5000);
+	setInterval(loadTweetsPerMinute, 5000);
 
-	function loadTweetsPerSchedule() {
-		$.get("/tweets-per-schedule", function(data) {
+	function loadTweetsPerMinute() {
+		$.get("/tpm", function(data) {
 			//date.tweetsPerSchedule
 
-			// Tweets per minute graph
-			$.each(data.schedules, function(key, value) {
-				tpmChart.data.datasets[0].data[data.schedules.length-1 - key] = value.num_new_tweets;
-			});
+			tpmChart.data.datasets[0].data.shift();
+			tpmChart.data.datasets[0].data.push(data.tpm);
 			tpmChart.update();
 		});
 	}

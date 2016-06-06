@@ -14,10 +14,10 @@ use DB;
 class DataController extends Controller
 {
 
-	public function getTweetsPerSchedule() {
-		$schedules = TweetsPerSchedule::orderBy('id', 'desc')->take(120)->get();
-
-		return response()->json(compact('schedules'));
+	public function getTweetsPerMinute() {
+		$schedules = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
+		$tpm = $schedules->sum('num_new_tweets');
+		return response()->json(compact('tpm'));
 	}
 
 
