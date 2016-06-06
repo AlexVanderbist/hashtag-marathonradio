@@ -66,6 +66,16 @@ class DataController extends Controller
 				'name' => 'tom',
 				'start' => '2016-06-06 08:00:00',
 				'stop' => '2016-06-06 18:00:00'
+			],
+			[
+				'name' => 'peter',
+				'start' => '2016-06-06 18:00:00',
+				'stop' => '2016-06-07 08:00:00'
+			],
+			[
+				'name' => 'julie',
+				'start' => '2016-06-07 08:00:00',
+				'stop' => '2016-06-07 18:00:00'
 			]
 		];
 
