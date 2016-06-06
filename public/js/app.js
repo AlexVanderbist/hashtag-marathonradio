@@ -49,7 +49,7 @@ $(function() {
 	});
 
 	setInterval(loadNewData, 5000);
-	setInterval(loadTweetsPerMinute, 1000);
+	setInterval(loadTweetsPerMinute, 5000);
 
 	function loadTweetsPerMinute() {
 							tpmChart.data.datasets[0].data.push(Math.random() * 3);
