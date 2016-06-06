@@ -19,6 +19,19 @@ return [
 	'niet',
 	'je',
 	'zijn',
+	'mijn',
+	'voor',
+	'were',
+	'naar',
+	'eens',
+	'echt',
+	'gaan',
+	'jullie',
+	'moet',
+	'veel',
+	'toch',
+	'alle',
+	'alles',
 
 	// english
 

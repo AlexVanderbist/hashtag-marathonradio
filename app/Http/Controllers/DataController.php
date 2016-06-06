@@ -8,15 +8,28 @@ use App\Http\Requests;
 use Twitter;
 use App\Tweet;
 use App\TweetsPerSchedule;
+use App\WordOccurence;
 use DB;
 
 class DataController extends Controller
 {
 	public function generateWords() {
 		$allTweets = Tweet::all();
+		$allWordsList = [];
 
 		foreach ($allTweets as $key => $tweet) {
-			
+			$wordList = $this->extract_common_words($tweet->tweet,100);
+			foreach ($wordList as $word => $count) {
+				if(array_key_exists($word, $allWordsList)) $allWordsList[$word] += $count;
+				else $allWordsList[$word] = $count;
+			}
+		}
+
+		foreach ($allWordsList as $word => $occurences) {
+			WordOccurence::firstOrCreate([
+				'word' => $word,
+				'occurences' => $occurences
+			]);
 		}
 	}
 
