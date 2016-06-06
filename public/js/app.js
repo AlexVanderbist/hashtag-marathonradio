@@ -2,6 +2,12 @@ $(function() {
 
 	var ctx = document.getElementById("tpmChart");
 	var labels = new Array(60).fill('');
+	labels[0] = '-5min';
+	labels[12] = '-4min';
+	labels[24] = '-3min';
+	labels[36] = '-2min';
+	labels[48] = '-1min';
+	labels[59] = 'nu';
 	var startData = new Array(60).fill(0);
 	var tpmChart = new Chart(ctx, {
 	    type: 'line',
@@ -10,7 +16,7 @@ $(function() {
 			datasets: [
 				{
 		            fill: true,
-		            lineTension: 0.3,
+		            lineTension: 0.4,
 		            backgroundColor: "rgba(26, 152, 204, 0.4)",
 		            borderColor: "#12367E",
 		            borderCapStyle: 'butt',
@@ -33,20 +39,26 @@ $(function() {
 						suggestedMax: 5
 	                }
 	            }],
+	            xAxes: [{
+	                ticks: {
+						maxTicksLimit: 10
+	                }
+	            }],
 	        }
 	    }
 	});
 
 	setInterval(loadNewData, 5000);
-	setInterval(loadTweetsPerMinute, 5000);
+	setInterval(loadTweetsPerMinute, 1000);
 
 	function loadTweetsPerMinute() {
+							tpmChart.data.datasets[0].data.push(Math.random() * 3);
+				tpmChart.data.datasets[0].data.shift();
+	//			tpmChart.data.datasets[0].data.push(data.tpm);
+				tpmChart.update(0);
 		$.get("/tpm", function(data) {
 			//date.tweetsPerSchedule
 
-			tpmChart.data.datasets[0].data.shift();
-			tpmChart.data.datasets[0].data.push(data.tpm);
-			tpmChart.update();
 		});
 	}
 
