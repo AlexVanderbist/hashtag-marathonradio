@@ -35,7 +35,7 @@ $(function() {
 	    }
 	});
 
-	setInterval(loadNewData, 60000);
+	setInterval(loadNewData, 10000);
 	setInterval(loadTweetsPerSchedule, 5000);
 
 	function loadTweetsPerSchedule() {
