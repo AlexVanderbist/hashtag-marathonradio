@@ -152,7 +152,7 @@
 	</script>
 
 	<script src="{{asset("js/vendor.js?v=2")}}"></script>
-	<script src="{{asset("js/app.js?v=2")}}"></script>
+	<script src="{{asset("js/app.js?v=3")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
