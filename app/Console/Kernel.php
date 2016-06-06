@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\FixTweetDates::class,
-	    Commands\GemerateWordOccurences::class,
+	    Commands\GenerateWordOccurences::class,
     ];
 
     /**
