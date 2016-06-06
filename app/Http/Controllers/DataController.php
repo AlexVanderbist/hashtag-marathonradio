@@ -86,10 +86,12 @@ class DataController extends Controller
 			'peter' => 0
 		];
 
+		$tpm = $this->getTweetsPerMinute();
+
 		foreach ($schedule as $key => $schedule) {
 			$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at', [$schedule['start'], $schedule['stop']])->get()->count();
 		}
 
-		return response()->json(compact('wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
+		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
 }

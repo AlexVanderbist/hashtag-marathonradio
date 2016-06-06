@@ -49,10 +49,10 @@ $(function() {
 	});
 
 	setInterval(loadNewData, 5000);
-	setInterval(loadTweetsPerMinute, 5000);
+	//setInterval(loadTweetsPerMinute, 5000);
 
 	loadNewData();
-	loadTweetsPerMinute();
+	//loadTweetsPerMinute();
 
 	numeral.language('nl', {
         delimiters: {
@@ -88,6 +88,9 @@ $(function() {
 
 	var usersWithMostHashtags = {};
 	function loadNewData () {
+		
+		loadTweetsPerMinute();
+
 		console.log('loading new data');
 		$.get("/data", function(data) {
 			$('#totalTweetCount').html(data.totalTweetCount);
