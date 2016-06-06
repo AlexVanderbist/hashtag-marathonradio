@@ -84,6 +84,17 @@
 			</div>
 			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
+					<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
+					<div id="searchResult" style="display:none;">
+						<div class="profileImg"></div>
+						<h3>Proficiat, je staat op de</h3>
+						<h1><span id="searchPos"></span> plaats!</h1>
+					</div>
+					<div id="noResults" style="display:none;">
+						<h3>Helaas, je staat niet in de top 500 :(</h3>
+					</div>
+				</div>
+				<div class="well well-sm">
 					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
 					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
 					</ul>

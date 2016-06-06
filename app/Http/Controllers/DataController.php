@@ -24,10 +24,10 @@ class DataController extends Controller
     public function getData() {
 
 		$usersWithMostHashtags = DB::table('tweets')
-					                ->select(DB::raw('username'), DB::raw('count(*) as count'))
+					                ->select('username', 'image', DB::raw('count(*) as count'))
 					                ->groupBy('user_id')
 					                ->orderBy('count', 'desc')
-					                ->take(300)
+					                ->take(500)
 					                ->get();
 
 		$totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));

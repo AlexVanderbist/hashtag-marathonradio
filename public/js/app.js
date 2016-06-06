@@ -51,6 +51,27 @@ $(function() {
 	setInterval(loadNewData, 5000);
 	setInterval(loadTweetsPerMinute, 5000);
 
+	numeral.language('nl', {
+        delimiters: {
+            thousands: ' ',
+            decimal  : ','
+        },
+        abbreviations: {
+            thousand : 'k',
+            million  : ' mln',
+            billion  : ' mld',
+            trillion : ' bln'
+        },
+        ordinal : function (number) {
+            var remainder = number % 100;
+            return (number !== 0 && remainder <= 1 || remainder === 8 || remainder >= 20) ? 'ste' : 'de';
+        },
+        currency: {
+            symbol: '€ '
+        }
+    });
+	numeral.language('nl');
+
 	function loadTweetsPerMinute() {
 		$.get("/tpm", function(data) {
 			//date.tweetsPerSchedule
@@ -62,6 +83,7 @@ $(function() {
 		});
 	}
 
+	var usersWithMostHashtags = {};
 	function loadNewData () {
 		console.log('loading new data');
 		$.get("/data", function(data) {
@@ -76,6 +98,7 @@ $(function() {
 
 			// Users with most hashtags
 			$('#usersWithMostHashtags').empty();
+			usersWithMostHashtags = data.usersWithMostHashtags;
 			$.each(data.usersWithMostHashtags, function( key, value ){
 				var $newLi = $('<li/>')
 							.addClass('list-group-item');
@@ -134,4 +157,21 @@ $(function() {
 		}
 	});
 
+	// Search
+	$( "#search" ).keyup(function( event ) {
+
+		//a = [{prop1:"abc",prop2:"qwe"},{prop1:"bnmb",prop2:"yutu"},{prop1:"zxvz",prop2:"qwrq"}]
+		var index = usersWithMostHashtags.findIndex(x => x.username==$('#search').val());
+		var user = usersWithMostHashtags[index];
+		if (user) {
+			$('#noResults').hide();
+			$('#searchResult .profileImg').css('background-image', 'url(' + user.image + ')');
+			$('#searchPos').html(numeral(index+1).format('0o'));
+			$('#searchResult').show();
+	  	} else {
+			$('#searchResult').hide();
+			if($('#search').val().length) $('#noResults').show();
+			else $('#noResults').hide();
+		}
+	});
 });

@@ -13,12 +13,13 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 
+	mix.copy('node_modules/numeral/min/numeral.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/moment/min/moment-with-locales.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/chart.js/dist/Chart.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/bootstrap-sass/assets/fonts/', 'public/fonts/');
 	mix.copy('node_modules/jquery/dist/jquery.min.js', 'resources/assets/js/');
-    mix.scripts(['jquery.min.js','moment-with-locales.min.js', 'Chart.min.js','bootstrap.min.js'], 'public/js/vendor.js');
+    mix.scripts(['numeral.min.js','jquery.min.js','moment-with-locales.min.js', 'Chart.min.js','bootstrap.min.js'], 'public/js/vendor.js');
     mix.sass('app.scss');
 
 });
