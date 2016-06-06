@@ -23,6 +23,7 @@ class DataController extends Controller
 				if(array_key_exists($word, $allWordsList)) $allWordsList[$word] += $count;
 				else $allWordsList[$word] = $count;
 			}
+			echo "tweet";
 		}
 
 		foreach ($allWordsList as $word => $occurences) {

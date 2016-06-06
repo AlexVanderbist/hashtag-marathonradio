@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+		//$schedule->call()->;
+
 		$schedule->call(function () {
 
 			$max_id = null;
