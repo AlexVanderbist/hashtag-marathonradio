@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 use App\Tweet;
 use Carbon\Carbon;
 use DB;
-use App\Tweet;
 use App\WordOccurence;
 
 class FixTweetDates extends Command
