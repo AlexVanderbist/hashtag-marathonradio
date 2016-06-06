@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-		$schedule->command('tweets:generateoccurences')->everyTenMinutes();
+		$schedule->command('tweets:generateoccurences')->everyHour();
 
 		$schedule->command('tweets:load')->everyMinute();
     }
