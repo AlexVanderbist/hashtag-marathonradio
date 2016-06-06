@@ -51,6 +51,9 @@ $(function() {
 	setInterval(loadNewData, 5000);
 	setInterval(loadTweetsPerMinute, 5000);
 
+	loadNewData();
+	loadTweetsPerMinute();
+
 	numeral.language('nl', {
         delimiters: {
             thousands: ' ',
@@ -132,7 +135,6 @@ $(function() {
 		});
 	}
 
-	loadNewData();
 
 	$('#reloadBtn').on("click", loadNewData);
 
@@ -168,7 +170,14 @@ $(function() {
 	$( "#search" ).keyup(function( event ) {
 
 		//a = [{prop1:"abc",prop2:"qwe"},{prop1:"bnmb",prop2:"yutu"},{prop1:"zxvz",prop2:"qwrq"}]
-		var index = usersWithMostHashtags.findIndex(x => x.username==$('#search').val());
+		var indexes = $.map(usersWithMostHashtags, function(obj, index) {
+		    if(obj.username == $('#search').val()) {
+		        return index;
+		    }
+		});
+
+		var index = indexes[0];
+		//var index = usersWithMostHashtags.findIndex(x => x.username==$('#search').val());
 		var user = usersWithMostHashtags[index];
 		if (user) {
 			$('#noResults').hide();
