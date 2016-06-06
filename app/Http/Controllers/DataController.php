@@ -15,9 +15,9 @@ class DataController extends Controller
 {
 
 	public function getTweetsPerSchedule() {
-		$tweetsPerSchedule = TweetsPerSchedule::all()->last();
+		$schedules = TweetsPerSchedule::orderBy('id', 'desc')->take(120)->get();
 
-		return response()->json(compact('tweetsPerSchedule'));
+		return response()->json(compact('schedules'));
 	}
 
 
@@ -35,8 +35,9 @@ class DataController extends Controller
 		$totalTweetCount = Tweet::count();
 
 		//dd($tpm);
-		$tweetsPerSchedule = TweetsPerSchedule::all()->last();
-		$tps = $tweetsPerSchedule->num_new_tweets / 5;
+		$scheduleCounts = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
+		$tpm = $scheduleCounts->sum('num_new_tweets');
+		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
 

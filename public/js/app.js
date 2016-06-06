@@ -43,9 +43,10 @@ $(function() {
 			//date.tweetsPerSchedule
 
 			// Tweets per minute graph
-			tpmChart.addData(data.tweetsPerSchedule.num_new_tweets, 'lol');
-			tpmChart.removeData();
-
+			$.each(data.schedules, function(key, value) {
+				tpmChart.data.datasets[0].data[data.schedules.length-1 - key] = value.num_new_tweets;
+			});
+			tpmChart.update();
 		});
 	}
 
@@ -54,11 +55,11 @@ $(function() {
 		$.get("/data", function(data) {
 			$('#totalTweetCount').html(data.totalTweetCount);
 			$('#tps').html(parseFloat(data.tps).toFixed(2));
+			$('#tpm').html(data.tpm);
 			$('#totalUserCount').html(data.totalUserCount);
 			$('#peterCount').html(data.tweetsPerPerson.peter);
 			$('#tomCount').html(data.tweetsPerPerson.tom);
 			$('#julieCount').html(data.tweetsPerPerson.julie);
-			$('#tpm').html(data.tpm[0].num_new_tweets);
 
 
 			// Users with most hashtags
