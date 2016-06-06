@@ -25,6 +25,7 @@ class DataController extends Controller
 
 		$usersWithMostHashtags = DB::table('tweets')
 					                ->select('username', 'image', DB::raw('count(*) as count'))
+									->where('tweet', 'not like', 'RT%')
 					                ->groupBy('user_id')
 					                ->orderBy('count', 'desc')
 					                ->take(500)
