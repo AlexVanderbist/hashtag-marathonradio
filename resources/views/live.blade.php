@@ -76,16 +76,16 @@
 					<h1 id="peterCount">Laden...</h1>
 					<h3>tweets tijdens Peter</h3>
 				</div>
+				<div class="well well-sm">
+					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorkomende woorden</h2>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
 					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
 					<ul class="list-group scrollable text-left" id="usersWithMostHashtags">
-					</ul>
-				</div>
-				<div class="well well-sm">
-					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorkomende woorden</h2>
-					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
 					</ul>
 				</div>
 			</div>
