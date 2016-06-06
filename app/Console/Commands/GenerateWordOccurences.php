@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use DB;
 use App\WordOccurence;
 
-class FixTweetDates extends Command
+class GenerateWordOccurences extends Command
 {
     /**
      * The name and signature of the console command.
