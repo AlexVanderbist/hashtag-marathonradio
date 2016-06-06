@@ -77,7 +77,7 @@
 					<h3>tweets tijdens Peter</h3>
 				</div>
 				<div class="well well-sm">
-					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorkomende woorden</h2>
+					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorgekomen woorden</h2>
 					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
 					</ul>
 				</div>
