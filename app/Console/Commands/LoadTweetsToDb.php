@@ -39,6 +39,7 @@ class LoadTweetsToDb extends Command
 		foreach (config('schedule') as $key => $schedule) {
 			$now = strtotime('now');
 			if($now >= strtotime($schedule['start']) && $now < $schedule['stop']) {
+				echo $schedule['dj'];
 				return $schedule['id'];
 			}
 		}
