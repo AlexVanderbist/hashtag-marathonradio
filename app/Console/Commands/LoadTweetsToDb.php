@@ -38,7 +38,7 @@ class LoadTweetsToDb extends Command
 	public function getCurrentDj() {
 		foreach (config('schedule') as $key => $schedule) {
 			$now = strtotime('now');
-			if($now >= strtotime($schedule['start']) && $now < $schedule['end']) {
+			if($now >= strtotime($schedule['start']) && $now < $schedule['stop']) {
 				return $schedule['id'];
 			}
 		}
