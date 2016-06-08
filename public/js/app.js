@@ -110,11 +110,12 @@ $(function() {
 			usersWithMostHashtags = data.usersWithMostHashtags;
 			$.each(data.usersWithMostHashtags, function( key, value ){
 				var $newLi = $('<li/>')
-							.addClass('list-group-item');
+							.addClass('list-group-item')
+							.html((key+1) + '. ');
 				var $newA = $('<a/>')
 							.attr("href", "http://www.twitter.com/"+value.username)
 							.attr("target", "_blank")
-							.html((key+1) + '. ' + value.username);
+							.html(value.username);
 				var $newSpan = $('<span/>')
 							.addClass('badge')
 							.html(value.count + ' tweets');
