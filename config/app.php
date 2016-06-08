@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Brussels',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,7 @@ return [
     */
 
     'aliases' => [
-		
+
     	'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
 
         'App' => Illuminate\Support\Facades\App::class,

@@ -36,10 +36,16 @@ class LoadTweetsToDb extends Command
     }
 
 	public function getCurrentDj() {
+		date_default_timezone_set('Europe/Brussels');
+		$now = strtotime('now');
+
 		foreach (config('schedule') as $key => $schedule) {
-			$now = strtotime('now');
-			if($now >= strtotime($schedule['start']) && $now < $schedule['stop']) {
-				echo $schedule['dj'];
+
+			$start = Carbon::parse($schedule['start'])->timestamp;
+			$stop  = Carbon::parse($schedule['stop'] )->timestamp;
+
+			//echo DateTime::createFromFormat('Y-m-d G:i:s', '2016-06-09 08:00:00');
+			if($now >= $start && $now < $stop) {
 				return $schedule['id'];
 			}
 		}
