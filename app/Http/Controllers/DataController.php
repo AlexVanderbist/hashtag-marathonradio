@@ -23,7 +23,7 @@ class DataController extends Controller
 
 
     public function getData() {
-
+		//DB::enableQueryLog();
 		$usersWithMostHashtags = DB::table('tweets')
 					                ->select('username', 'image', DB::raw('count(*) as count'))
 									->where('tweet', 'not like', 'RT%')
@@ -34,7 +34,7 @@ class DataController extends Controller
 
 		$totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
 
-		$totalTweetCount = Tweet::count();
+		$totalTweetCount = DB::table('tweets')->count();
 
 		//dd($tpm);
 		$scheduleCounts = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
@@ -42,6 +42,7 @@ class DataController extends Controller
 		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
+
 
 		$schedule = [
 			[
@@ -97,16 +98,18 @@ class DataController extends Controller
 		];
 
 		$tweetsPerPerson = [
-			'julie' => 0,
-			'tom' => 0,
-			'peter' => 0
+			'julie' => '<small>tijdelijk onbeschikbaar</small>',
+			'tom' => '<small>tijdelijk onbeschikbaar</small>',
+			'peter' => '<small>tijdelijk onbeschikbaar</small>'
 		];
 
 		$tpm = $this->getTweetsPerMinute();
 
-		foreach ($schedule as $key => $schedule) {
-			$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at', [$schedule['start'], $schedule['stop']])->get()->count();
-		}
+		// foreach ($schedule as $key => $schedule) {
+		// 	$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at', [$schedule['start'], $schedule['stop']])->get()->count();
+		// }
+
+		//dd(DB::getQueryLog());
 
 		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
