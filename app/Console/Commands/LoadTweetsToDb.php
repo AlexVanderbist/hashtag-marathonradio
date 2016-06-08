@@ -80,7 +80,7 @@ class LoadTweetsToDb extends Command
 					 'full_name' => $tweet->user->name,
 					 'tweet' => $tweet->text,
 					 'tweeted_at' => $formattedTweetedAt,
-					 'tweeted_at_timestamp' => $formattedTweetedAt,
+					 'tweeted_at_datetime' => $formattedTweetedAt,
 					 'image' => $tweet->user->profile_image_url
 				 ])->save();
 
