@@ -114,7 +114,7 @@ $(function() {
 				var $newA = $('<a/>')
 							.attr("href", "http://www.twitter.com/"+value.username)
 							.attr("target", "_blank")
-							.html(value.username);
+							.html((key+1) + '. ' + value.username);
 				var $newSpan = $('<span/>')
 							.addClass('badge')
 							.html(value.count + ' tweets');
@@ -130,7 +130,7 @@ $(function() {
 			$.each(data.wordOccurences, function( key, value ){
 				var $newLi = $('<li/>')
 							.addClass('list-group-item')
-							.html(value.word);
+							.html((key+1) + '. ' + value.word);
 
 				$('#wordOccurences').append($newLi);
 			});
