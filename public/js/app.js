@@ -91,7 +91,10 @@ $(function() {
 			var dot_separator_number_step = $.animateNumber.numberStepFactories.separator('.');
 			$(this)
 				.prop('number', (isNaN($(this).html()) ? 0 : $(this).html()))
-				.animateNumber({number: num}, 5000);
+				.animateNumber({
+					number: num,
+    				numberStep: dot_separator_number_step
+				}, 5000);
 	    });
 	};
 
@@ -104,7 +107,7 @@ $(function() {
 
 			// Random numbers
 			$('#totalTweetCount').setElementNumber(data.totalTweetCount);
-			$('#tps').setElementNumber(parseFloat(data.tps).toFixed(2));
+			$('#tps').html(parseFloat(data.tps).toFixed(2));
 			$('#tpm').setElementNumber(data.tpm);
 			$('#totalUserCount').setElementNumber(data.totalUserCount);
 			$('#peterCount').setElementNumber(data.tweetsPerPerson.peter);
