@@ -30,6 +30,7 @@
     "chart.js": "^2.1.4",
     "jqcloud2": "^2.0.2",
     "jquery": "^2.2.4",
+    "jquery.animate-number": "0.0.13",
     "moment": "^2.13.0",
     "node-sass": "^3.7.0",
     "numeral": "^1.5.3"

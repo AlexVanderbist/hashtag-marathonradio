@@ -86,18 +86,30 @@ $(function() {
 		});
 	}
 
+	$.fn.setElementNumber = function(num){
+	    this.each(function(){
+			var dot_separator_number_step = $.animateNumber.numberStepFactories.separator('.');
+			$(this)
+				.prop('number', (isNaN($(this).html()) ? 0 : $(this).html()))
+				.animateNumber({number: num}, 5000);
+	    });
+	};
+
+
 	var usersWithMostHashtags = {};
 	function loadNewData () {
 
 		console.log('loading new data');
 		$.get("/data", function(data) {
-			$('#totalTweetCount').html(data.totalTweetCount);
-			$('#tps').html(parseFloat(data.tps).toFixed(2));
-			$('#tpm').html(data.tpm);
-			$('#totalUserCount').html(data.totalUserCount);
-			$('#peterCount').html(data.tweetsPerPerson.peter);
-			$('#tomCount').html(data.tweetsPerPerson.tom);
-			$('#julieCount').html(data.tweetsPerPerson.julie);
+
+			// Random numbers
+			$('#totalTweetCount').setElementNumber(data.totalTweetCount);
+			$('#tps').setElementNumber(parseFloat(data.tps).toFixed(2));
+			$('#tpm').setElementNumber(data.tpm);
+			$('#totalUserCount').setElementNumber(data.totalUserCount);
+			$('#peterCount').setElementNumber(data.tweetsPerPerson.peter);
+			$('#tomCount').setElementNumber(data.tweetsPerPerson.tom);
+			$('#julieCount').setElementNumber(data.tweetsPerPerson.julie);
 
 			// tpm
 			tpmChart.data.datasets[0].data.push(data.tpm);
