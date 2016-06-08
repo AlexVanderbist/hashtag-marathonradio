@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\FixTweetDates::class,
 	    Commands\GenerateWordOccurences::class,
 	    Commands\LoadTweetsToDb::class,
+	    Commands\UpdateDjColumnToSchedule::class,
     ];
 
     /**

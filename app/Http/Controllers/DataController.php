@@ -23,7 +23,7 @@ class DataController extends Controller
 
 
     public function getData() {
-		DB::enableQueryLog();
+
 		$usersWithMostHashtags = DB::table('tweets')
 					                ->select('username', 'image', DB::raw('count(*) as count'))
 									->where('tweet', 'not like', 'RT%')
@@ -52,10 +52,12 @@ class DataController extends Controller
 
 		$tpm = $this->getTweetsPerMinute();
 
+//DB::enableQueryLog();
 		// foreach (config('schedule') as $key => $schedule) {
-		// 	$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at', [$schedule['start'], $schedule['stop']])->get()->count();
+		// 	//$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at_datetime', [$schedule['start'], $schedule['stop']])->get()->count();
+		// 	$tweetsPerPerson[$schedule['name']] += Tweet::where('tweeted_at_datetime', '>=', $schedule['start'])->where('tweeted_at_datetime', '<=',$schedule['stop'])->get()->count();
 		// }
-
+//dd(DB::getQueryLog());
 
 		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
