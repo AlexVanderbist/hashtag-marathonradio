@@ -64,6 +64,7 @@ class LoadTweetsToDb extends Command
 		$numTweetsPostedThisSchedule = 0;
 
 		$dj = $this->getCurrentDj();
+		echo $dj . "\n\r";
 
 		do {
 
