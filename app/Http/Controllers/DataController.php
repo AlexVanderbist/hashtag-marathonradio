@@ -43,21 +43,17 @@ class DataController extends Controller
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
 
-
+		// DB::enableQueryLog();
 		$tweetsPerPerson = [
-			'julie' => '<small>tijdelijk onbeschikbaar</small>',
-			'tom' => '<small>tijdelijk onbeschikbaar</small>',
-			'peter' => '<small>tijdelijk onbeschikbaar</small>'
+			'julie' => Tweet::where('dj', 1)->count(),
+			'tom' => Tweet::where('dj', 2)->count(),
+			'peter' => Tweet::where('dj', 3)->count()
 		];
+
+		// dd(DB::getQueryLog());
 
 		$tpm = $this->getTweetsPerMinute();
 
-//DB::enableQueryLog();
-		// foreach (config('schedule') as $key => $schedule) {
-		// 	//$tweetsPerPerson[$schedule['name']] += Tweet::whereBetween('tweeted_at_datetime', [$schedule['start'], $schedule['stop']])->get()->count();
-		// 	$tweetsPerPerson[$schedule['name']] += Tweet::where('tweeted_at_datetime', '>=', $schedule['start'])->where('tweeted_at_datetime', '<=',$schedule['stop'])->get()->count();
-		// }
-//dd(DB::getQueryLog());
 
 		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}

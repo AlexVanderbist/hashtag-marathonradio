@@ -35,64 +35,76 @@ class LoadTweetsToDb extends Command
         parent::__construct();
     }
 
+	public function getCurrentDj() {
+		foreach (config('schedule') as $key => $schedule) {
+			$now = strtotime('now');
+			if($now >= strtotime($schedule['start']) && $now < $schedule['end']) {
+				return $schedule['id'];
+			}
+		}
+	}
+
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-	 public function handle() {
-		 $max_id = null;
-		 $reachedOldTweets = false;
-		 $highestTweetId = DB::table('tweets')->max('tweet_id');
-		 $highestTweetId = ($highestTweetId == null ? 0 : $highestTweetId);
-		 $numTweetsPostedThisSchedule = 0;
+ 	public function handle() {
+		$max_id = null;
+		$reachedOldTweets = false;
+		$highestTweetId = DB::table('tweets')->max('tweet_id');
+		$highestTweetId = ($highestTweetId == null ? 0 : $highestTweetId);
+		$numTweetsPostedThisSchedule = 0;
 
-		 do {
+		$dj = $this->getCurrentDj();
 
-			 // fetch tweets
-			 $tweets = Twitter::getSearch(['q' => '#marathonradio', 'count' => 100, 'max_id' => $max_id, 'since_id' => 739003964088291328]);
+		do {
 
-			 echo "loaded new tweets<br/>";
-			 // loop through tweets
-			 foreach ($tweets->statuses as $tweet) {
+			// fetch tweets
+			$tweets = Twitter::getSearch(['q' => '#marathonradio', 'count' => 100, 'max_id' => $max_id, 'since_id' => 739003964088291328]);
 
-				 echo $tweet->id;
-				 // Check if we've reached old tweets
-				 if($tweet->id <= $highestTweetId) {
-					 $reachedOldTweets = true;
-					 echo "reached old tweets<br/>";
-					 break; // jump out of foreach
-				 }
+			echo "loaded new tweets<br/>";
+			// loop through tweets
+			foreach ($tweets->statuses as $tweet) {
+
+				echo $tweet->id;
+				// Check if we've reached old tweets
+				if($tweet->id <= $highestTweetId) {
+					$reachedOldTweets = true;
+					echo "reached old tweets<br/>";
+					break; // jump out of foreach
+				}
 
 
-				 // If it's a new tweet, add it
-				 $newTweet = Tweet::firstOrNew([
-					 'tweet_id' => $tweet->id
-				 ]);
+				// If it's a new tweet, add it
+				$newTweet = Tweet::firstOrNew([
+					'tweet_id' => $tweet->id
+				]);
 
-				 // Count new tweet this schedule
-				 $numTweetsPostedThisSchedule++;
-				 $formattedTweetedAt = Carbon::parse($tweet->created_at);
-				 $formattedTweetedAt->setTimezone('Europe/Brussels');
-				 $newTweet->fill([
-					 'user_id' => $tweet->user->id,
-					 'username' => $tweet->user->screen_name,
-					 'full_name' => $tweet->user->name,
-					 'tweet' => $tweet->text,
-					 'tweeted_at' => $formattedTweetedAt,
-					 'tweeted_at_datetime' => $formattedTweetedAt,
-					 'image' => $tweet->user->profile_image_url
-				 ])->save();
+				// Count new tweet this schedule
+				$numTweetsPostedThisSchedule++;
+				$formattedTweetedAt = Carbon::parse($tweet->created_at);
+				$formattedTweetedAt->setTimezone('Europe/Brussels');
+				$newTweet->fill([
+					'user_id' => $tweet->user->id,
+					'username' => $tweet->user->screen_name,
+					'full_name' => $tweet->user->name,
+					'tweet' => $tweet->text,
+					'tweeted_at' => $formattedTweetedAt,
+					'tweeted_at_datetime' => $formattedTweetedAt,
+					'image' => $tweet->user->profile_image_url,
+					'dj' => $dj
+				])->save();
 
-				 echo "saved tweet<br/>";
+				echo "saved tweet<br/>";
 
-				 // set highest tweet for next query
-				 $max_id = $tweet->id;
-			 }
-			 echo "end<br/>";
-		 } while (!empty($tweets->statuses) && !$reachedOldTweets);
+				// set highest tweet for next query
+				$max_id = $tweet->id;
+			}
+			echo "end<br/>";
+		} while (!empty($tweets->statuses) && !$reachedOldTweets);
 
-		 // loading tweets done, now save the scheulde tweet count to db
-		 TweetsPerSchedule::create(['num_new_tweets' => $numTweetsPostedThisSchedule]);
- 	}
+		// loading tweets done, now save the scheulde tweet count to db
+		TweetsPerSchedule::create(['num_new_tweets' => $numTweetsPostedThisSchedule]);
+	}
 }
