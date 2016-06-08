@@ -15,6 +15,7 @@ class Tweet extends Model
 		'full_name',
 		'tweet',
 		'tweeted_at',
+		'tweeted_at_datetime',
 		'image'
 	];
 }

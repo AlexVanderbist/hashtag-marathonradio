@@ -19,7 +19,6 @@ class CreateTweetsTable extends Migration
 			$table->string('username');
 			$table->string('full_name');
 			$table->text('tweet');
-            $table->timestamps();
         });
     }
 
