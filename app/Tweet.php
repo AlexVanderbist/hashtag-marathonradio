@@ -16,6 +16,7 @@ class Tweet extends Model
 		'tweet',
 		'tweeted_at',
 		'tweeted_at_datetime',
-		'image'
+		'image',
+		'dj'
 	];
 }
