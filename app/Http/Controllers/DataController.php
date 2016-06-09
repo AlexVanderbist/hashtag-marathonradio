@@ -17,11 +17,15 @@ class DataController extends Controller
 
 	public function test() {
 		$tenMinutesAgo = new Carbon('10 minutes ago');
-		DB::enableQueryLog();
+
+		// DB::enableQueryLog();
+
 		$allTweets = Tweet::where('tweeted_at_datetime', '>=', $tenMinutesAgo)->get();
 		$allWordsList = [];
 		$tweetCount = 0;
-		dd(DB::getQueryLog());
+
+		// dd(DB::getQueryLog());
+
 		foreach ($allTweets as $key => $tweet) {
 			$wordList = $this->extract_common_words($tweet->tweet,100);
 			foreach ($wordList as $word => $count) {
@@ -81,6 +85,8 @@ class DataController extends Controller
 
     public function getData() {
 
+		// DB::enableQueryLog();
+
 		$usersWithMostHashtags = DB::table('tweets')
 					                ->select('username', 'image', DB::raw('count(*) as count'))
 									->where('tweet', 'not like', 'RT%')
@@ -100,17 +106,15 @@ class DataController extends Controller
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
 
-		// DB::enableQueryLog();
 		$tweetsPerPerson = [
 			'julie' => Tweet::where('dj', 1)->count(),
 			'tom' => Tweet::where('dj', 2)->count(),
 			'peter' => Tweet::where('dj', 3)->count()
 		];
 
-		// dd(DB::getQueryLog());
-
 		$tpm = $this->getTweetsPerMinute();
 
+		// dd(DB::getQueryLog());
 
 		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
 	}
