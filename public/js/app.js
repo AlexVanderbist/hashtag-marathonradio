@@ -89,8 +89,9 @@ $(function() {
 	$.fn.setElementNumber = function(num){
 	    this.each(function(){
 			var dot_separator_number_step = $.animateNumber.numberStepFactories.separator('.');
+			//console.log(isNaN($(this).html()), $(this).html().replace(/\./g,''));
 			$(this)
-				.prop('number', (isNaN($(this).html()) ? 0 : $(this).html()))
+				.prop('number', (isNaN($(this).html()) ? 0 : $(this).html().replace(/\./g,'')))
 				.animateNumber({
 					number: num,
     				numberStep: dot_separator_number_step
@@ -188,30 +189,43 @@ $(function() {
 		window.twttr.widgets.load();
 	}
 
+	var delay = (function(){
+		var timer = 0;
+		return function(callback, ms){
+			clearTimeout (timer);
+			timer = setTimeout(callback, ms);
+		};
+	})();
+
 	// Search
 	$( "#search" ).keyup(function( event ) {
+		
+		delay(function(){
 
-		//a = [{prop1:"abc",prop2:"qwe"},{prop1:"bnmb",prop2:"yutu"},{prop1:"zxvz",prop2:"qwrq"}]
-		var indexes = $.map(usersWithMostHashtags, function(obj, index) {
-		    if(obj.username == $('#search').val()) {
-		        return index;
-		    }
-		});
 
-		var index = indexes[0];
-		//var index = usersWithMostHashtags.findIndex(x => x.username==$('#search').val());
-		var user = usersWithMostHashtags[index];
-		if (user) {
-			$('#noResults').hide();
-			$('#searchResult .profileImg').css('background-image', 'url(' + user.image + ')');
-			updateTwitterValues('http://www.hashtagmarathonradio.be/', "Ik sta op de "+numeral(index+1).format('0o')+" plaats in de #marathonradio top 500!");
-			//$('.twitter-share-button').attr('href', "https://twitter.com/intent/tweet?text=" + escape("Ik sta op de "+(index+1)+" plaats in de #marathonradio top 500!"));
-			$('#searchPos').html(numeral(index+1).format('0o'));
-			$('#searchResult').show();
-	  	} else {
-			$('#searchResult').hide();
-			if($('#search').val().length) $('#noResults').show();
-			else $('#noResults').hide();
-		}
+			var indexes = $.map(usersWithMostHashtags, function(obj, index) {
+			    if(obj.username.toLowerCase() == $('#search').val().toLowerCase()) {
+			        return index;
+			    }
+			});
+
+			var index = indexes[0];
+			//var index = usersWithMostHashtags.findIndex(x => x.username==$('#search').val());
+			var user = usersWithMostHashtags[index];
+			if (user) {
+				$('#noResults').hide();
+				$('#searchResult .profileImg').css('background-image', 'url(' + user.image + ')');
+				updateTwitterValues('http://www.hashtagmarathonradio.be/', "Ik sta op de "+numeral(index+1).format('0o')+" plaats in de #marathonradio top 500!");
+				//$('.twitter-share-button').attr('href', "https://twitter.com/intent/tweet?text=" + escape("Ik sta op de "+(index+1)+" plaats in de #marathonradio top 500!"));
+				$('#searchPos').html(numeral(index+1).format('0o'));
+				$('#searchResult').show();
+			} else {
+				$('#searchResult').hide();
+				if($('#search').val().length) $('#noResults').show();
+				else $('#noResults').hide();
+			}
+
+
+	    }, 1000 );
 	});
 });
