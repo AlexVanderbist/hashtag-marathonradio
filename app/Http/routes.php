@@ -25,8 +25,8 @@ Route::get('/data', [
 	'middleware' => 'api'
 ]);
 
-Route::get('/tpm', [
-    'as' => 'tpm',
-	'uses' => 'DataController@getTweetsPerMinute',
+Route::get('/test', [
+    'as' => 'test',
+	'uses' => 'DataController@test',
 	'middleware' => 'api'
 ]);
