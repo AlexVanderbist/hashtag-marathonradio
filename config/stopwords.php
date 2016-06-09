@@ -36,6 +36,8 @@ return [
 	'doet',
 	'sturen',
 	'iets',
+	'httpstconvpxvbgvkv',
+	'hoor',
 
 	'den',
 	'ja',
