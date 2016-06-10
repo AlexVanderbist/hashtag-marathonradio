@@ -141,6 +141,7 @@
 				Gemaakt door <a target="_blank" href="https://twitter.com/AlexVanderbist">&commat;AlexVanderbist</a><br />
 				Niet officieel geassocieerd met MNM.<br/>
 				Copyright &copy; Het MNM &amp; Marathonradio logo zijn eigendom van MNM.
+				❤️ <a href="https://www.facebook.com/groups/1707371486189381/">#marathonradioSquad</a>
 			</small>
 		</div>
 	</footer>
