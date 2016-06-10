@@ -16,7 +16,7 @@ class DataController extends Controller
 {
 
 	public function test() {
-		dd(WordOccurence::countOccurences('15 minutes ago'));
+		dd(WordOccurence::countOccurences('30 minutes ago'));
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +51,7 @@ class DataController extends Controller
 		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
-		$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('10 minutes ago', 10);
+		$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('20 minutes ago', 10);
 		$wordOccurencesLastTenMinutes = [];
 		foreach ($wordOccurencesLastTenMinutesRaw as $word => $count) {
 			$wordOccurencesLastTenMinutes[] = [

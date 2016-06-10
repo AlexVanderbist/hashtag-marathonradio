@@ -162,7 +162,7 @@ $(function() {
 				$append = $('<span/>')
 								.text((index+1) + '. ' + value.word)
 							.add($('<span/>',{class:'badge'})
-								.text(value.occurences));
+								.text(value.occurences + ' tweets'));
 				wordOccurencesLastTenMinutesArray.push({
 					id: value.word,
 					$liAppend: $append

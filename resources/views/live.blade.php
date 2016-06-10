@@ -80,7 +80,7 @@
 
 				<div class="well well-sm">
 					<h2>Populairste woorden</h2>
-					<h3>(laatste 10 minuten)</h3>
+					<h3>(laatste 30 minuten)</h3>
 					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
 					</ul>
 				</div>
