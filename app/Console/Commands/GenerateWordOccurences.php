@@ -37,7 +37,7 @@ class GenerateWordOccurences extends Command
      * @return mixed
      */
 	 public function handle() {
- 		$occurences = WordOccurences::all();
+ 		$occurences = WordOccurence::all();
 
  		foreach ($occurences as $word => $count) {
  			$oldWordOccurence = WordOccurence::firstOrCreate([
