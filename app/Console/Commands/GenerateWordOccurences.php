@@ -41,15 +41,17 @@ class GenerateWordOccurences extends Command
 		$numOccurences = count($occurences);
 		$addedCount = 0;
 
+		DB::table('word_occurences')->truncate();
+
  		foreach ($occurences as $word => $count) {
 			$addedCount ++;
 
 			echo "> ".($addedCount/$numOccurences) . "% done.\r";
 
- 			$oldWordOccurence = WordOccurence::firstOrCreate([
- 				'word' => $word
+ 			WordOccurence::create([
+ 				'word' => $word,
+				'occurences' => $count
  			]);
- 			$oldWordOccurence->update(['occurences' => $count]);
  		}
 		echo "\n\nDone: " + $numOccurences + " tweets processed!\n";
  	}
