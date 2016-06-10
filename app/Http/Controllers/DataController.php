@@ -51,6 +51,7 @@ class DataController extends Controller
 		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
+		$wordOccurencesLastTenMinutes = WordOccurence::countOccurences('10 minutes ago', 10);
 
 		$tweetsPerPerson = [
 			'julie' => Tweet::where('dj', 1)->count(),
@@ -62,6 +63,16 @@ class DataController extends Controller
 
 		// dd(DB::getQueryLog());
 
-		return response()->json(compact('tpm','wordOccurences','tweetsPerPerson','usersWithMostHashtags', 'totalTweetCount', 'totalUserCount', 'tpm', 'tps'));
+		return response()->json(compact(
+								'wordOccurencesLastTenMinutes',
+								'tpm',
+								'wordOccurences',
+								'tweetsPerPerson',
+								'usersWithMostHashtags',
+								'totalTweetCount',
+								'totalUserCount',
+								'tpm',
+								'tps'
+							));
 	}
 }

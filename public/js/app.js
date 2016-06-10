@@ -152,6 +152,16 @@ $(function() {
 				$('#wordOccurences').append($newLi);
 			});
 
+			// Most occuring words last 10 minutes
+			$('#wordOccurencesLastTenMinutes').empty();
+			$.each(data.wordOccurencesLastTenMinutes, function( key, value ){
+				var $newLi = $('<li/>')
+							.addClass('list-group-item')
+							.html((key+1) + '. ' + value.word);
+
+				$('#wordOccurencesLastTenMinutes').append($newLi);
+			});
+
 			// Last refresh
 			moment.locale('nl');
 			$('#lastRefresh').html(moment().format('LTS'));
@@ -199,7 +209,7 @@ $(function() {
 
 	// Search
 	$( "#search" ).keyup(function( event ) {
-		
+
 		delay(function(){
 
 

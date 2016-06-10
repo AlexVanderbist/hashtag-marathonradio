@@ -76,9 +76,11 @@
 					<h1 id="peterCount">Laden...</h1>
 					<h3>tweets tijdens Peter</h3>
 				</div>
+
 				<div class="well well-sm">
-					<h2 style="margin-bottom:15px;font-weight:bold;">Meest voorgekomen woorden</h2>
-					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
+					<h2>Populairste woorden</h2>
+					<h3>(laatste 10 minuten)</h3>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
 					</ul>
 				</div>
 			</div>
@@ -102,7 +104,13 @@
 					</div>
 
 
-					<ul style="margin-top:15px;" class="list-group scrollable text-left" id="usersWithMostHashtags">
+					<ul style="margin-top:15px;" class="list-group scrollable scrollable-sm text-left" id="usersWithMostHashtags">
+					</ul>
+				</div>
+
+				<div class="well well-sm">
+					<h2>Meest voorgekomen woorden</h2>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
 					</ul>
 				</div>
 			</div>
