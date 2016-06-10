@@ -54,7 +54,7 @@ class DataController extends Controller
 		$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('10 minutes ago', 10);
 		$wordOccurencesLastTenMinutes = [];
 		foreach ($wordOccurencesLastTenMinutesRaw as $word => $count) {
-			$wordOccurences[] = [
+			$wordOccurencesLastTenMinutes[] = [
 				'word' => $word,
 				'occurences' => $count
 			];
