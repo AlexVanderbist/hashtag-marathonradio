@@ -156,7 +156,6 @@ $(function() {
 			});
 
 			// Most occuring words last 10 minutes
-			console.log(data.wordOccurencesLastTenMinutes);
 			var wordOccurencesLastTenMinutesArray = [];
 			$.each(data.wordOccurencesLastTenMinutes, function (index,value) {
 				wordOccurencesLastTenMinutesArray.push(value.word);
