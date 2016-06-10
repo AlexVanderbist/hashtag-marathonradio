@@ -14,7 +14,7 @@ class WordOccurence extends Model
 		'occurences'
 	];
 
-	static function countOccurences($timeDifference = false) {
+	static function countOccurences($timeDifference = false, $limit) {
 		if($timeDifference) {
 			// return words from timeframe
 			$timeAgo = new Carbon($timeDifference);
@@ -37,6 +37,7 @@ class WordOccurence extends Model
 		}
 
 		arsort($allWordsList);
+		$allWordsList = array_slice($allWordsList, 0, 100);
 
 		return $allWordsList;
    }
