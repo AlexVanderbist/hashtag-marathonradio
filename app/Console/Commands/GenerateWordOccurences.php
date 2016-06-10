@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\WordOccurence;
+use DB;
 
 class GenerateWordOccurences extends Command
 {
@@ -46,7 +47,7 @@ class GenerateWordOccurences extends Command
  		foreach ($occurences as $word => $count) {
 			$addedCount ++;
 
-			echo "> ".($addedCount/$numOccurences) . "% done.\r";
+			echo "> ".($addedCount/$numOccurences)*100 . "% done.\r";
 
  			WordOccurence::create([
  				'word' => $word,
