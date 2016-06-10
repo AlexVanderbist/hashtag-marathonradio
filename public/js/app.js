@@ -48,6 +48,9 @@ $(function() {
 	    }
 	});
 
+	// Create new animated list
+	$('#wordOccurencesLastTenMinutes').animatedListUpdate();
+
 	setInterval(loadNewData, 5000);
 	//setInterval(loadTweetsPerMinute, 5000);
 
@@ -153,14 +156,7 @@ $(function() {
 			});
 
 			// Most occuring words last 10 minutes
-			$('#wordOccurencesLastTenMinutes').empty();
-			$.each(data.wordOccurencesLastTenMinutes, function( key, value ){
-				var $newLi = $('<li/>')
-							.addClass('list-group-item')
-							.html((key+1) + '. ' + value.word);
-
-				$('#wordOccurencesLastTenMinutes').append($newLi);
-			});
+			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(data.wordOccurencesLastTenMinutes);
 
 			// Last refresh
 			moment.locale('nl');
@@ -238,4 +234,7 @@ $(function() {
 
 	    }, 1000 );
 	});
+
+
+
 });

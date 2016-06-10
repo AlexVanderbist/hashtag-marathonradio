@@ -45,6 +45,7 @@
 		</div>
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-4 resizeColumn">
+
 				<div class="well well-sm">
 					<h1 id="totalTweetCount">Laden...</h1>
 					<h3>tweets met #marathonradio</h3>
@@ -164,6 +165,7 @@
 	</script>
 
 	<script src="{{asset("js/vendor.js?v=2")}}"></script>
+	<script src="{{asset("js/animatedListUpdate.js")}}"></script>
 	<script src="{{asset("js/app.js?v=3")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
