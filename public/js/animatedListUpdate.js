@@ -1,53 +1,3 @@
-(function ( $ ) {
-
-    $.fn.animatedListUpdateOld = function(newListItems, options) {
-
-		newListItems = typeof newListItems !== 'undefined' ? newListItems : [];
-		options = typeof options !== 'undefined' ? options : {};
-
-        var settings = $.extend({
-			numberPrefix: true
-        }, options );
-
-		var i,len;
-
-		// this is <ul>
-
-		return this.each(function(index, list) {
-			// Get the old list of items
-			var oldListItems = [];
-			$(list).find('li span').each(function() {
-				oldListItems.push($(this).text());
-			});
-
-			console.log('Old list items:',oldListItems);
-
-			if(oldListItems.length) {
-				// Compare arrays
-				for (i = 0, len = oldListItems.length; i < len; i++) {
-					console.log('Position of existing element',i,newListItems.findIndex(function(element, index, array) {
-						return oldListItems[i] == element;
-					}));
-				}
-			} else {
-				// No old list items yet, just add them all
-				console.log('Add new items', newListItems);
-				for (i = 0, len = newListItems.length; i < len; i++) {
-					$(this).append($('<li/>').append($('<span/>').text(newListItems[i])));
-				}
-			}
-
-
-	    });
-
-    };
-
-}( jQuery ));
-
-
-
-
-
 (function($) {
 
     $.animatedListUpdate = function(element, options) {
@@ -87,7 +37,7 @@
 				});
 				var positionInNewElements = indexes[0];
 
-				console.log('Positie van oud element',i,'in nieuwe elementen:',positionInNewElements);
+				// console.log('Positie van oud element',i,'in nieuwe elementen:',positionInNewElements);
 
 				if(positionInNewElements === undefined) {
 					// element needs to be removed

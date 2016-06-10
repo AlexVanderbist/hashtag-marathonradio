@@ -107,7 +107,7 @@ $(function() {
 	var usersWithMostHashtags = {};
 	function loadNewData () {
 
-		console.log('loading new data');
+		//console.log('loading new data');
 		$.get("/data", function(data) {
 
 			// Random numbers
