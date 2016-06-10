@@ -92,6 +92,7 @@
 
 					// animation
 					//$listItemElements[i].hide('slow', function(){ $(this).remove(); });
+					console.log($listItemElements[i]);
 					$listItemElements[i].animate({
 						top: 40,
 						height:0,
