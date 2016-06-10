@@ -38,13 +38,19 @@ class GenerateWordOccurences extends Command
      */
 	 public function handle() {
  		$occurences = WordOccurence::all();
+		$numOccurences = count($occurences);
+		$addedCount = 0;
 
  		foreach ($occurences as $word => $count) {
+			$addedCount ++;
+
+			echo "> ".($addedCount/$numOccurences) . "% done.\r";
+
  			$oldWordOccurence = WordOccurence::firstOrCreate([
  				'word' => $word
  			]);
  			$oldWordOccurence->update(['occurences' => $count]);
  		}
-		echo "\n\r\n\rDone: " + count($occurences) + " tweets processed!\n\r\n\r";
+		echo "\n\nDone: " + $numOccurences + " tweets processed!\n";
  	}
 }
