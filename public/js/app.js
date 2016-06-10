@@ -159,9 +159,13 @@ $(function() {
 			// Most occuring words last 10 minutes
 			var wordOccurencesLastTenMinutesArray = [];
 			$.each(data.wordOccurencesLastTenMinutes, function (index,value) {
+				$append = $('<span/>')
+								.text((index+1) + '. ' + value.word)
+							.add($('<span/>',{class:'badge'})
+								.text(value.occurences));
 				wordOccurencesLastTenMinutesArray.push({
 					id: value.word,
-					$liAppend: $('<span/>').text((index+1) + '. ' + value.word).append($('<span/>',{class:'badge'}).text(value.occurences))
+					$liAppend: $append
 				});
 			});
 			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(wordOccurencesLastTenMinutesArray);
