@@ -157,7 +157,11 @@ $(function() {
 
 			// Most occuring words last 10 minutes
 			console.log(data.wordOccurencesLastTenMinutes);
-			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(data.wordOccurencesLastTenMinutes);
+			var wordOccurencesLastTenMinutesArray = [];
+			$.each(data.wordOccurencesLastTenMinutes, function (index,value) {
+				wordOccurencesLastTenMinutesArray.push(value.word);
+			});
+			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(wordOccurencesLastTenMinutesArray);
 
 			// Last refresh
 			moment.locale('nl');
