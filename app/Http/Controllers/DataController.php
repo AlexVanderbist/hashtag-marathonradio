@@ -16,7 +16,7 @@ class DataController extends Controller
 {
 
 	public function test() {
-		dd(WordOccurence::countOccurences('10 minutes ago'));
+		dd(WordOccurence::countOccurences('15 minutes ago'));
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////
