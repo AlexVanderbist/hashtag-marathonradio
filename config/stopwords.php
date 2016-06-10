@@ -39,6 +39,10 @@ return [
 	'httpstconvpxvbgvkv',
 	'hoor',
 	'sandergillis',
+	'worden',
+	'wanneer',
+	'noem',
+	'direct',
 
 	'maar',
 	'niet',
