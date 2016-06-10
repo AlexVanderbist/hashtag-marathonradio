@@ -108,7 +108,6 @@
 				// List item needs to be added or moved
 
 				var positionInOldElements = listItems.indexOf(newListItems[i]);
-				console.log(i, positionInOldElements);
 
 				if(positionInOldElements == -1) {
 					// this new list item needs to be added
