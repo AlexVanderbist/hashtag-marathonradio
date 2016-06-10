@@ -99,10 +99,11 @@
 						height:0,
 						opacity: 0,
 						padding: 0
-					}, plugin.settings.animationTime, function(){ $(this).remove(); console.log('removed') });
+					}, plugin.settings.animationTime, function(){ $(this).remove(); });
 
 					listItems.splice( i, 1 );
 					$listItemElements.splice( i, 1 );
+					i--;len--;
 				}
 			}
 
