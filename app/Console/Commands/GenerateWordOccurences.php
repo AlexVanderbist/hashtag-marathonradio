@@ -38,7 +38,7 @@ class GenerateWordOccurences extends Command
      * @return mixed
      */
 	 public function handle() {
- 		$occurences = countOccurences();
+ 		$occurences = WordOccurence::countOccurences();
 		$numOccurences = count($occurences);
 		$addedCount = 0;
 
