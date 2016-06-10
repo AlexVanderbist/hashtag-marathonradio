@@ -113,7 +113,7 @@ $(function() {
 			// Random numbers
 			$('#totalTweetCount').setElementNumber(data.totalTweetCount);
 			$('#tps').html(parseFloat(data.tps).toFixed(2));
-			$('#tpm').setElementNumber(data.tpm);
+			$('#tpm').html(data.tpm);
 			$('#totalUserCount').setElementNumber(data.totalUserCount);
 			$('#peterCount').setElementNumber(data.tweetsPerPerson.peter);
 			$('#tomCount').setElementNumber(data.tweetsPerPerson.tom);

@@ -43,6 +43,7 @@ return [
 	'wanneer',
 	'noem',
 	'direct',
+	'daar',
 
 	'maar',
 	'niet',
