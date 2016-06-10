@@ -93,7 +93,7 @@
 					// animation
 					//$listItemElements[i].hide('slow', function(){ $(this).remove(); });
 					var $listItemToRemove = $listItemElements[i];
-					console.log($listItems);
+					console.log(listItems);
 					$listItemToRemove.animate({
 						top: 40,
 						height:0,
