@@ -50,14 +50,7 @@ $(function() {
 
 	// Create new animated list
 	$('#wordOccurencesLastTenMinutes').animatedListUpdate();
-	// $('#test').animatedListUpdate();
-	// $('#test').data('animatedListUpdate').updateList(['wtf', 'omg', 'alex', 'hoe', 'was', 'het']);
-	// setTimeout(function () {
-	// 	$('#test').data('animatedListUpdate').updateList(['wtf', 'omg', 'ded', 'grrr', 'oh', 'het']);
-	// }, 2000);
-	// setTimeout(function () {
-	// 	$('#test').data('animatedListUpdate').updateList(['grrr', 'oh', 'het','wtf', 'omg', 'ded']);
-	// }, 4000);
+
 
 	setInterval(loadNewData, 5000);
 	//setInterval(loadTweetsPerMinute, 5000);
@@ -166,7 +159,10 @@ $(function() {
 			// Most occuring words last 10 minutes
 			var wordOccurencesLastTenMinutesArray = [];
 			$.each(data.wordOccurencesLastTenMinutes, function (index,value) {
-				wordOccurencesLastTenMinutesArray.push(value.word);
+				wordOccurencesLastTenMinutesArray.push({
+					id: value.word,
+					$liAppend: $('<span/>').text((index+1) + '. ').append($('<span/>',{class:'badge'}))
+				});
 			});
 			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(wordOccurencesLastTenMinutesArray);
 

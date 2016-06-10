@@ -65,7 +65,6 @@
     	element = element;
 
 		var listItems = [];
-		var $listItemElements = [];
 
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
@@ -76,25 +75,25 @@
         plugin.updateList = function(newListItems) {
 			newListItems = typeof newListItems !== 'undefined' ? newListItems : [];
 
-			var movements = [];
-
-			var compareElementToThis = function(element, index, array, newIndex) {
-				return this == element;
-			};
 
 			for (i = 0, len = listItems.length; i < len; i++) {
 				// Loop old list items to see which ones need to be removed
-				//var positionInNewElements = newListItems.findIndex(compareElementToThis, listItems[i]);
-				var positionInNewElements = newListItems.indexOf(listItems[i]);
 
-				if(positionInNewElements == -1) {
+				// Find index of the old item in the new items
+				var indexes = $.map(newListItems, function(obj, index) {
+					if(obj.id == listItems[i].id) {
+						return index;
+					}
+				});
+				var positionInNewElements = indexes[0];
+
+				console.log('Positie van oud element',i,'in nieuwe elementen:',positionInNewElements);
+
+				if(positionInNewElements === undefined) {
 					// element needs to be removed
 
 					// animation
-					//$listItemElements[i].hide('slow', function(){ $(this).remove(); });
-					var $listItemToRemove = $listItemElements[i];
-					console.log(listItems);
-					$listItemToRemove.animate({
+					listItems[i].$li.animate({
 						top: 40,
 						height:0,
 						opacity: 0,
@@ -102,7 +101,6 @@
 					}, plugin.settings.animationTime, function(){ $(this).remove(); });
 
 					listItems.splice( i, 1 );
-					$listItemElements.splice( i, 1 );
 					i--;len--;
 				}
 			}
@@ -110,25 +108,31 @@
 			for (i = 0, len = newListItems.length; i < len; i++) {
 				// List item needs to be added or moved
 
-				var positionInOldElements = listItems.indexOf(newListItems[i]);
+				// Find index of the new item in the old items
+				var indexes = $.map(listItems, function(obj, index) {
+					if(obj.id == newListItems[i].id) {
+						return index;
+					}
+				});
+				var positionInOldElements = indexes[0];
 
-				if(positionInOldElements == -1) {
+				//console.log('Position of ', i, 'in old elements is', positionInOldElements);
+
+				if(positionInOldElements === undefined) {
 					// this new list item needs to be added
-					$newLi = addNewListItem(i+1,newListItems[i]);
+					newListItems[i].$li = addNewListItem(newListItems[i].$liAppend);
 					listItems.push(newListItems[i]);
 
-					var offset = ((listItems.length - 1) - i) * - $newLi.outerHeight();
-					$newLi.animate({top: offset}, plugin.settings.animationTime);
+					var offset = ((listItems.length - 1) - i) * - newListItems[i].$li.outerHeight();
+					newListItems[i].$li.animate({top: offset}, plugin.settings.animationTime);
 
-					$listItemElements.push($newLi);
 				} else {
 					// element already exists; need to move it prolly
-					var offset = (positionInOldElements - i) * - $listItemElements[positionInOldElements].outerHeight();
-					$listItemElements[positionInOldElements]
+					var offset = (positionInOldElements - i) * - listItems[positionInOldElements].$li.outerHeight();
+					listItems[positionInOldElements].$li
 						.animate({
 							top: offset
-						}, plugin.settings.animationTime)
-						.find('.numberPrefix').text((i + 1) + '. ');
+						}, plugin.settings.animationTime);
 				}
 			}
 
@@ -136,23 +140,20 @@
 				// Moved/added/deleted elements for animations;
 				// Now completely reset all to newListItems
 				listItems = newListItems;
-				$listItemElements = [];
 				$element.empty();
 				for (i = 0, len = newListItems.length; i < len; i++) {
-					$newLi = addNewListItem(i+1,newListItems[i]);
-					$listItemElements.push($newLi);
+					listItems[i].$li = addNewListItem(newListItems[i].$liAppend);
 				}
 			}, plugin.settings.animationTime);
 
         };
 
 
-		var addNewListItem = function (number, text) {
+		var addNewListItem = function ($liappend) {
 			var $newLi = $('<li/>')
 							.addClass('list-group-item')
 							.css('position', 'relative')
-							.append($('<span/>', {class:'numberPrefix'}).text(number + '. '))
-							.append($('<span/>', {class: 'listItemText'}).text(text));
+							.append($liappend);
 			$element.append($newLi);
 			return $newLi;
 		};
