@@ -52,7 +52,7 @@ class WordOccurence extends Model
 
 		foreach ( $match_words as $key => $item ) {
 			$item = trim($item);
-			if ($item == '' || in_array(strtolower($item), config('stopwords')) || strlen($item) <= 3 ) {
+			if (substr($item, 0, 4) === 'http' || $item == '' || in_array(strtolower($item), config('stopwords')) || strlen($item) <= 3 ) {
 				//echo $item; // PAS DE STRLEN NOG AAN :(
 				//if($item == "")echo '"' . $item . ','.$key.'"+';
 				unset($match_words[$key]);
