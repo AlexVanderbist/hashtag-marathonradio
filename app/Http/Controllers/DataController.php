@@ -51,7 +51,14 @@ class DataController extends Controller
 		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
-		$wordOccurencesLastTenMinutes = WordOccurence::countOccurences('10 minutes ago', 10);
+		$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('10 minutes ago', 10);
+		$wordOccurencesLastTenMinutes = [];
+		foreach ($wordOccurencesLastTenMinutesRaw as $word => $count) {
+			$wordOccurences[] = [
+				'word' => $word,
+				'occurences' => $count
+			];
+		}
 
 		$tweetsPerPerson = [
 			'julie' => Tweet::where('dj', 1)->count(),
