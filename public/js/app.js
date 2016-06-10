@@ -161,7 +161,7 @@ $(function() {
 			$.each(data.wordOccurencesLastTenMinutes, function (index,value) {
 				wordOccurencesLastTenMinutesArray.push({
 					id: value.word,
-					$liAppend: $('<span/>').text((index+1) + '. ').append($('<span/>',{class:'badge'}))
+					$liAppend: $('<span/>').text((index+1) + '. ' + value.word).append($('<span/>',{class:'badge'}).text(value.occurences))
 				});
 			});
 			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(wordOccurencesLastTenMinutesArray);
