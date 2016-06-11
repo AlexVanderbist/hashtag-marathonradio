@@ -104,6 +104,9 @@ $(function() {
 	};
 
 
+	var totalTweetCount = 0;
+
+
 	var usersWithMostHashtags = {};
 	function loadNewData () {
 
@@ -172,23 +175,25 @@ $(function() {
 
 
 			// 50000 tweets
-			$('#randomTweet > div').first().animate({left:-300, opacity:0},1000, function() {
-				$(this).remove();
-			});
-			$newTweet = $('<div/>')
-								.css({'position': 'absolute', 'left': '300px', 'top' : '0px', 'width': '100%', 'opacity':0})
-								.append(
-									$('<p/>')
-										.text(data.lastTweet.tweet)
-										.prepend(
-											$('<h4/>')
-												.text('Tweet ' + data.totalTweetCount +  ': @'+data.lastTweet.username)
-												.css('font-weight', 'bold')));
+			if(totalTweetCount != data.totalTweetCount) {
+				$('#randomTweet > div').first().animate({left:-300, opacity:0},1000, function() {
+					$(this).remove();
+				});
+				$newTweet = $('<div/>')
+									.css({'position': 'absolute', 'left': '300px', 'top' : '0px', 'width': '100%', 'opacity':0})
+									.append(
+										$('<p/>')
+											.text(data.lastTweet.tweet)
+											.prepend(
+												$('<h4/>')
+													.text('Tweet ' + data.totalTweetCount +  ': @'+data.lastTweet.username)
+													.css('font-weight', 'bold')));
 
-			$('#randomTweet').append($newTweet);
-			$newTweet.animate({left:'0', opacity:1},1500);
-			$('#randomTweet').animate({height: $newTweet.outerHeight()}, 500);
-
+				$('#randomTweet').append($newTweet);
+				$newTweet.animate({left:'0', opacity:1},1500);
+				$('#randomTweet').animate({height: $newTweet.outerHeight()}, 500);
+			}
+			totalTweetCount = data.totalTweetCount;
 
 
 			// Last refresh
