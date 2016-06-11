@@ -45,14 +45,20 @@
 		</div>
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-4 resizeColumn">
+				<div class="well well-sm">
+					<h3>Wie wordt de 50.000ste tweet?</h3>
+					<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
+
+					</div>
+					<div id="winningTweet" style="display:none;">
+						<h2 class="number"></h2>
+						<p class="tweetText"></p>
+					</div>
+				</div>
 
 				<div class="well well-sm">
 					<h1 id="totalTweetCount">Laden...</h1>
 					<h3>tweets met #marathonradio</h3>
-				</div>
-				<div class="well well-sm">
-					<h1 id="totalUserCount">Laden...</h1>
-					<h3>twitteraars posten met #marathonradio</h3>
 				</div>
 				<div class="well well-sm">
 					<h1 id="tpm">Laden...</h1>
@@ -62,6 +68,10 @@
 				</div>
 			</div>
 			<div class="col-md-4 resizeColumn">
+				<div class="well well-sm">
+					<h1 id="totalUserCount">Laden...</h1>
+					<h3>twitteraars posten met #marathonradio</h3>
+				</div>
 				<div class="well well-sm">
 					<div class="profileImg julie"></div>
 					<h1 id="julieCount">Laden...</h1>

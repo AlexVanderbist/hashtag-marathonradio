@@ -60,6 +60,10 @@ class DataController extends Controller
 			];
 		}
 
+		$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(50000)->take(1)->first();
+		$lastTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'desc')->take(1)->first();
+//		dd($lastTweet);
+
 		$tweetsPerPerson = [
 			'julie' => Tweet::where('dj', 1)->count(),
 			'tom' => Tweet::where('dj', 2)->count(),
@@ -71,6 +75,8 @@ class DataController extends Controller
 		// dd(DB::getQueryLog());
 
 		return response()->json(compact(
+								'winningTweet',
+								'lastTweet',
 								'wordOccurencesLastTenMinutes',
 								'tpm',
 								'wordOccurences',

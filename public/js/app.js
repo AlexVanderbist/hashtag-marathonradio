@@ -170,6 +170,27 @@ $(function() {
 			});
 			$('#wordOccurencesLastTenMinutes').data('animatedListUpdate').updateList(wordOccurencesLastTenMinutesArray);
 
+
+			// 50000 tweets
+			$('#randomTweet > div').first().animate({left:-300, opacity:0},1000, function() {
+				$(this).remove();
+			});
+			$newTweet = $('<div/>')
+								.css({'position': 'absolute', 'left': '300px', 'top' : '0px', 'width': '100%', 'opacity':0})
+								.append(
+									$('<p/>')
+										.text(data.lastTweet.tweet)
+										.prepend(
+											$('<h4/>')
+												.text('Tweet ' + data.totalTweetCount +  ': @'+data.lastTweet.username)
+												.css('font-weight', 'bold')));
+
+			$('#randomTweet').append($newTweet);
+			$newTweet.animate({left:'0', opacity:1},1500);
+			$('#randomTweet').animate({height: $newTweet.outerHeight()}, 500);
+
+
+
 			// Last refresh
 			moment.locale('nl');
 			$('#lastRefresh').html(moment().format('LTS'));
