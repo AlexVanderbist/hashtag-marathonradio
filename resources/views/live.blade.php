@@ -46,13 +46,17 @@
 		<div class="row" style="margin-top:20px;">
 			<div class="col-md-4 resizeColumn">
 				<div class="well well-sm">
-					<h3>Wie wordt de 50.000ste tweet?</h3>
+					<h3 id="winningTweetHeader">Wie wordt de 50.000ste tweet?</h3>
 					<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
 
 					</div>
 					<div id="winningTweet" style="display:none;">
-						<h2 class="number"></h2>
-						<p class="tweetText"></p>
+						<h2>50.000ste tweet</h2>
+						<div class="text-left">
+							<div class="profileImg pull-left"></div>
+							<h3 class="username"></h3>
+							<span class="tweet"></span>
+						</div>
 					</div>
 				</div>
 

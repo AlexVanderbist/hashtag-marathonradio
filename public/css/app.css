@@ -5778,6 +5778,7 @@ h1, h2 {
   border: 2px solid #CFEAF4; }
 
 .well.well-sm {
-  border-radius: 8px; }
+  border-radius: 8px;
+  padding: 12px; }
 
 /*# sourceMappingURL=app.css.map */

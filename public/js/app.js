@@ -60,7 +60,7 @@ $(function() {
 
 	numeral.language('nl', {
         delimiters: {
-            thousands: ' ',
+            thousands: '.',
             decimal  : ','
         },
         abbreviations: {
@@ -175,7 +175,7 @@ $(function() {
 
 
 			// 50000 tweets
-			if(totalTweetCount != data.totalTweetCount) {
+			if(totalTweetCount != data.totalTweetCount && !data.winningTweet) {
 				$('#randomTweet > div').first().animate({left:-300, opacity:0},1000, function() {
 					$(this).remove();
 				});
@@ -186,12 +186,22 @@ $(function() {
 											.text(data.lastTweet.tweet)
 											.prepend(
 												$('<h4/>')
-													.text('Tweet ' + data.totalTweetCount +  ': @'+data.lastTweet.username)
+													.text('Tweet ' + numeral(data.totalTweetCount).format('0,0') +  ': @'+data.lastTweet.username)
 													.css('font-weight', 'bold')));
 
 				$('#randomTweet').append($newTweet);
 				$newTweet.animate({left:'0', opacity:1},1500);
 				$('#randomTweet').animate({height: $newTweet.outerHeight()}, 500);
+			} else if(data.winningTweet) {
+				// winning tweet is chosen
+				$('#randomTweet').hide();
+				$('#winningTweetHeader').hide();
+				$winningTweet = $('#winningTweet');
+				$winningTweet.find('.tweet').text(data.winningTweet.tweet);
+				$winningTweet.find('.username').text(data.winningTweet.username);
+				$winningTweet.find('.profileImg').css({'background-image': 'url('+ data.winningTweet.image+ ')', 'width':"70px", 'height':"70px", 'margin': '0 15px 15px 0'});
+				$winningTweet.show();
+
 			}
 			totalTweetCount = data.totalTweetCount;
 
