@@ -198,7 +198,7 @@ $(function() {
 				$('#winningTweetHeader').hide();
 				$winningTweet = $('#winningTweet');
 				$winningTweet.find('.tweet').text(data.winningTweet.tweet);
-				$winningTweet.find('.username').text(data.winningTweet.username);
+				$winningTweet.find('.username').text('@'.data.winningTweet.username);
 				$winningTweet.find('.profileImg').css({'background-image': 'url('+ data.winningTweet.image+ ')', 'width':"70px", 'height':"70px", 'margin': '0 15px 15px 0'});
 				$winningTweet.show();
 
