@@ -99,7 +99,7 @@ $(function() {
 				.animateNumber({
 					number: num,
     				numberStep: dot_separator_number_step
-				}, 5000);
+				}, 3000);
 	    });
 	};
 
@@ -180,14 +180,14 @@ $(function() {
 					$(this).remove();
 				});
 				$newTweet = $('<div/>')
-									.css({'position': 'absolute', 'left': '300px', 'top' : '0px', 'width': '100%', 'opacity':0})
-									.append(
-										$('<p/>')
-											.text(data.lastTweet.tweet)
-											.prepend(
-												$('<h4/>')
-													.text('Tweet ' + numeral(data.totalTweetCount).format('0,0') +  ': @'+data.lastTweet.username)
-													.css('font-weight', 'bold')));
+								.css({'position': 'absolute', 'left': '300px', 'top' : '0px', 'width': '100%', 'opacity':0})
+								.append(
+									$('<p/>')
+										.text(data.lastTweet.tweet)
+										.prepend(
+											$('<h4/>')
+												.text('Tweet ' + numeral(data.totalTweetCount).format('0,0') +  ': @'+data.lastTweet.username)
+												.css('font-weight', 'bold')));
 
 				$('#randomTweet').append($newTweet);
 				$newTweet.animate({left:'0', opacity:1},1500);
