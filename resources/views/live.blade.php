@@ -46,7 +46,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1 id="tpm">Laden...</h1>
+						<h1><i class="fa fa-bomb" aria-hidden="true"></i> <span id="tpm">Laden...</span></h1>
 						<h3>tweets per minuut</h3>
 						<small>Da's <span id="tps">0</span> tweets per seconde!</small>
 						<canvas id="tpmChart" width="400" height="250"></canvas>
@@ -135,7 +135,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2 style="margin-bottom:15px;font-weight:bold;"><i class="fa fa-bomb" aria-hidden="true"></i> Meeste tweets</h2>
+						<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets</h2>
 
 
 						<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
