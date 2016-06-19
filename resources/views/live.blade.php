@@ -38,7 +38,7 @@
 				<h3>Dag <span id="dayCount"></span> van Marathonradio! <small>(speciaal voor Tom ;)</small></h3>
 
 
-				<p>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></p>
+				<p>Teller loopt sinds 4 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></p>
 			</div>
 		</div>
 	</div>
