@@ -15,6 +15,7 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 </head>
 
@@ -85,7 +86,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1 id="totalTweetCount">Laden...</h1>
+						<h1><i class="fa fa-heart" aria-hidden="true"></i> <span id="totalTweetCount">Laden...</span></h1>
 						<h3>tweets met #marathonradio</h3>
 					</div>
 				</div>
@@ -127,7 +128,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1 id="totalUserCount">Laden...</h1>
+						<h1><i class="fa fa-twitter" aria-hidden="true"></i> <span id="totalUserCount">Laden...</span></h1>
 						<h3>twitteraars met #marathonradio</h3>
 					</div>
 				</div>
