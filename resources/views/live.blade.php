@@ -39,148 +39,145 @@
 		</div>
 	</div>
 
-	<div class="container-fluid main-content">
-		<div class="container text-center">
-			<div class="row" style="margin-top:20px;">
-				<div class="col-md-3">
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-md-3">
 
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1 id="tpm">Laden...</h1>
-							<h3>tweets per minuut</h3>
-							<small>Da's <span id="tps">0</span> tweets per seconde!</small>
-							<canvas id="tpmChart" width="400" height="250"></canvas>
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-body text-left">
-
-							<div class="djStat">
-								<div class="profileImg julie"></div>
-								<h2 id="julieCount">Laden...</h2>
-								<h3>tweets tijdens Julie</h3>
-								<div class="clearfix"></div>
-							</div>
-
-							<div class="djStat">
-								<div class="profileImg tom"></div>
-								<h2 id="tomCount">Laden...</h2>
-								<h3>tweets tijdens Tom</h3>
-								<div class="clearfix"></div>
-							</div>
-
-							<div class="djStat">
-								<div class="profileImg peter"></div>
-								<h2 id="peterCount">Laden...</h2>
-								<h3>tweets tijdens Peter</h3>
-								<div class="clearfix"></div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-md-3">
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1 id="totalTweetCount">Laden...</h1>
-							<h3>tweets met #marathonradio</h3>
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h2 id="winningTweetHeader">Wie wordt de 100.000ste tweet?</h2>
-							<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
-
-							</div>
-							<div id="winningTweet" style="display:none;">
-								<h2>100.000ste tweet</h2>
-								<div class="text-left">
-									<div class="profileImg pull-left"></div>
-									<h3 class="username"></h3>
-									<span class="tweet"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div id="winningTweet">
-								<h2>50.000ste tweet</h2>
-								<div class="text-left">
-									<div class="profileImg pull-left" style="width: 50px; height: 50px; margin: 0px 10px 10px 0px; background-image: url('img/jo.jpg');"></div>
-									<h3 class="username">@ImjoOfficial</h3>
-									<span class="tweet">@julievdsteen I LOVE YOU #marathonradio</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-
-				<div class="col-md-3">
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h1 id="totalUserCount">Laden...</h1>
-							<h3>twitteraars met #marathonradio</h3>
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
-
-
-							<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
-							<div id="searchResult" style="display:none;">
-								<div>
-									<div class="profileImg"></div>
-									<h1><span id="searchPos"></span> plaats!</h1>
-									<div class="clearfix"></div>
-								</div>
-								<h3>Proficiat! Deel je overwinning:</h3>
-								<div id="twitterBtn"></div>
-							</div>
-							<div id="noResults" style="display:none;">
-								<h3>Helaas, je staat niet in de top 500 :(</h3>
-							</div>
-						</div>
-						<ul style="margin-top:15px;" class="list-group scrollable scrollable-sm text-left" id="usersWithMostHashtags">
-						</ul>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1 id="tpm">Laden...</h1>
+						<h3>tweets per minuut</h3>
+						<small>Da's <span id="tps">0</span> tweets per seconde!</small>
+						<canvas id="tpmChart" width="400" height="250"></canvas>
 					</div>
 				</div>
 
-				<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body text-left">
 
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h2>Populairste woorden</h2>
-							<h3>(laatste 30 minuten)</h3>
+						<div class="djStat">
+							<div class="profileImg julie"></div>
+							<h2 id="julieCount">Laden...</h2>
+							<h3>tweets tijdens Julie</h3>
+							<div class="clearfix"></div>
 						</div>
-						<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
-						</ul>
-					</div>
 
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h2>Meest gebruikte woorden</h2>
+						<div class="djStat">
+							<div class="profileImg tom"></div>
+							<h2 id="tomCount">Laden...</h2>
+							<h3>tweets tijdens Tom</h3>
+							<div class="clearfix"></div>
 						</div>
-						<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
-						</ul>
-					</div>
 
+						<div class="djStat">
+							<div class="profileImg peter"></div>
+							<h2 id="peterCount">Laden...</h2>
+							<h3>tweets tijdens Peter</h3>
+							<div class="clearfix"></div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1 id="totalTweetCount">Laden...</h1>
+						<h3>tweets met #marathonradio</h3>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2 id="winningTweetHeader">Wie wordt de 100.000ste tweet?</h2>
+						<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
+
+						</div>
+						<div id="winningTweet" style="display:none;">
+							<h2>100.000ste tweet</h2>
+							<div class="text-left">
+								<div class="profileImg pull-left"></div>
+								<h3 class="username"></h3>
+								<span class="tweet"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div id="winningTweet">
+							<h2>50.000ste tweet</h2>
+							<div class="text-left">
+								<div class="profileImg pull-left" style="width: 50px; height: 50px; margin: 0px 10px 10px 0px; background-image: url('img/jo.jpg');"></div>
+								<h3 class="username">@ImjoOfficial</h3>
+								<span class="tweet">@julievdsteen I LOVE YOU #marathonradio</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="col-md-3">
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h1 id="totalUserCount">Laden...</h1>
+						<h3>twitteraars met #marathonradio</h3>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+
+
+						<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
+						<div id="searchResult" style="display:none;">
+							<div>
+								<div class="profileImg"></div>
+								<h1><span id="searchPos"></span> plaats!</h1>
+								<div class="clearfix"></div>
+							</div>
+							<h3>Proficiat! Deel je overwinning:</h3>
+							<div id="twitterBtn"></div>
+						</div>
+						<div id="noResults" style="display:none;">
+							<h3>Helaas, je staat niet in de top 500 :(</h3>
+						</div>
+					</div>
+					<ul style="margin-top:15px;" class="list-group scrollable scrollable-sm text-left" id="usersWithMostHashtags">
+					</ul>
 				</div>
 			</div>
-		</div>		
-	</div>
 
+			<div class="col-md-3">
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2>Populairste woorden</h2>
+						<h3>(laatste 30 minuten)</h3>
+					</div>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
+					</ul>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2>Meest gebruikte woorden</h2>
+					</div>
+					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<!-- /container -->
 
 	<footer>
