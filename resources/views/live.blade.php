@@ -135,7 +135,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+						<h2 style="margin-bottom:15px;font-weight:bold;"><i class="fa fa-bomb" aria-hidden="true"></i> Meeste tweets</h2>
 
 
 						<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
