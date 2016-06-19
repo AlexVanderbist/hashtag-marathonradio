@@ -161,7 +161,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2>Populairste woorden</h2>
+						<h2><i class="fa fa-heart" aria-hidden="true"></i> Populairste woorden</h2>
 						<h3>(laatste 30 minuten)</h3>
 					</div>
 					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
