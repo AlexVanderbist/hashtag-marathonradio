@@ -86,7 +86,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h1><i class="fa fa-heart" aria-hidden="true"></i> <span id="totalTweetCount">Laden...</span></h1>
+						<h1><i class="fa fa-hashtag" aria-hidden="true"></i> <span id="totalTweetCount">Laden...</span></h1>
 						<h3>tweets met #marathonradio</h3>
 					</div>
 				</div>
