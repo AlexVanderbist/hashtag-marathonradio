@@ -211,6 +211,11 @@ $(function() {
 			// Last refresh
 			moment.locale('nl');
 			$('#lastRefresh').html(moment().format('LTS'));
+
+			var a = moment("2016-06-05");
+			var b = moment();
+			var diff = b.diff(a, 'days') // 1
+			$('#dayCount').html(diff + 1);
 		});
 	}
 
