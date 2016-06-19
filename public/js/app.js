@@ -153,8 +153,10 @@ $(function() {
 			$('#wordOccurences').empty();
 			$.each(data.wordOccurences, function( key, value ){
 				var $newLi = $('<li/>')
-							.addClass('list-group-item')
-							.html((key+1) + '. ' + value.word);
+								.addClass('list-group-item')
+								.text((key+1) + '. ' + value.word)
+							.append($('<span/>',{class:'badge'})
+								.text(value.occurences + ' tweets'));
 
 				$('#wordOccurences').append($newLi);
 			});
@@ -215,26 +217,26 @@ $(function() {
 
 	$('#reloadBtn').on("click", loadNewData);
 
-	// Tweetbar code
-	var displayTweetCol = false;
-	$('.btnToggleTweetCol').on("click", function(){
-		if(displayTweetCol) {
-			$('#mainContainer').toggleClass('container-fluid container');
-			$('#tweetCol').hide();
-			$('#btnDisableTweetCol').hide();
-			$('#btnEnableTweetCol').show();
-			$('.resizeColumn').removeClass('col-md-3').addClass('col-md-4');
-			displayTweetCol = false;
-		} else {
-			// show Tweetbar
-			$('#mainContainer').toggleClass('container-fluid container');
-			$('#btnDisableTweetCol').show();
-			$('#btnEnableTweetCol').hide();
-			$('.resizeColumn').removeClass('col-md-4').addClass('col-md-3');
-			$('#tweetCol').show();
-			displayTweetCol = true;
-		}
-	});
+	// // Tweetbar code
+	// var displayTweetCol = false;
+	// $('.btnToggleTweetCol').on("click", function(){
+	// 	if(displayTweetCol) {
+	// 		$('#mainContainer').toggleClass('container-fluid container');
+	// 		$('#tweetCol').hide();
+	// 		$('#btnDisableTweetCol').hide();
+	// 		$('#btnEnableTweetCol').show();
+	// 		$('.resizeColumn').removeClass('col-md-3').addClass('col-md-4');
+	// 		displayTweetCol = false;
+	// 	} else {
+	// 		// show Tweetbar
+	// 		$('#mainContainer').toggleClass('container-fluid container');
+	// 		$('#btnDisableTweetCol').show();
+	// 		$('#btnEnableTweetCol').hide();
+	// 		$('.resizeColumn').removeClass('col-md-4').addClass('col-md-3');
+	// 		$('#tweetCol').show();
+	// 		displayTweetCol = true;
+	// 	}
+	// });
 
 	function updateTwitterValues(share_url, title) {
 		// clear out the <a> tag that's currently there...probably don't really need this since you're replacing whatever is in there already.

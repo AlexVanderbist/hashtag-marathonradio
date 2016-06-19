@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 </head>
 
@@ -23,130 +23,164 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div class="container text-center" id="mainContainer">
+	<div class="container text-left" id="mainContainer">
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-sm-3 text-center">
 				<img src="{{asset("img/logo.png")}}" alt="Marathonradio" id="logo">
-				<p>De onofficiële #marathonradio statistieken!</p>
-
-				<div>
-					<button type="button" class="btn btn-sm btnToggleTweetCol" id="btnEnableTweetCol">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Live #marathonradio tweets weergeven
-					</button>
-					<button type="button" class="btn btn-sm btnToggleTweetCol" id="btnDisableTweetCol" style="display:none">
-						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Live #marathonradio tweets verbergen
-					</button>
-				</div>
-
-				<small>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></small>
-
-				<button class="btn btn-primary btn-sm hidden" id="reloadBtn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> vernieuwen</button>
-			</div>
-		</div>
-		<div class="row" style="margin-top:20px;">
-			<div class="col-md-4 resizeColumn">
-				<div class="well well-sm">
-					<h3 id="winningTweetHeader">Wie wordt de 50.000ste tweet?</h3>
-					<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
-
-					</div>
-					<div id="winningTweet" style="display:none;">
-						<h2>50.000ste tweet</h2>
-						<div class="text-left">
-							<div class="profileImg pull-left"></div>
-							<h3 class="username"></h3>
-							<span class="tweet"></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="well well-sm">
-					<h1 id="totalTweetCount">Laden...</h1>
-					<h3>tweets met #marathonradio</h3>
-				</div>
-				<div class="well well-sm">
-					<h1 id="tpm">Laden...</h1>
-					<h3>tweets per minuut</h3>
-					<small>Da's <span id="tps">0</span> tweets per seconde!</small>
-					<canvas id="tpmChart" width="400" height="250"></canvas>
-				</div>
-			</div>
-			<div class="col-md-4 resizeColumn">
-				<div class="well well-sm">
-					<h1 id="totalUserCount">Laden...</h1>
-					<h3>twitteraars posten met #marathonradio</h3>
-				</div>
-				<div class="well well-sm">
-					<div class="profileImg julie"></div>
-					<h1 id="julieCount">Laden...</h1>
-					<h3>tweets tijdens Julie</h3>
-				</div>
-				<div class="well well-sm">
-					<div class="profileImg tom"></div>
-					<h1 id="tomCount">Laden...</h1>
-					<h3>tweets tijdens Tom</h3>
-				</div>
-				<div class="well well-sm">
-					<div class="profileImg peter"></div>
-					<h1 id="peterCount">Laden...</h1>
-					<h3>tweets tijdens Peter</h3>
-				</div>
-
-				<div class="well well-sm">
-					<h2>Populairste woorden</h2>
-					<h3>(laatste 30 minuten)</h3>
-					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-4 resizeColumn">
-				<div class="well well-sm">
-					<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
-
-
-					<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
-					<div id="searchResult" style="display:none;">
-						<div>
-							<div class="profileImg"></div>
-							<h1><span id="searchPos"></span> plaats!</h1>
-							<div class="clearfix"></div>
-						</div>
-						<h3>Proficiat! Deel je overwinning:</h3>
-						<div id="twitterBtn"></div>
-					</div>
-					<div id="noResults" style="display:none;">
-						<h3>Helaas, je staat niet in de top 500 :(</h3>
-					</div>
-
-
-					<ul style="margin-top:15px;" class="list-group scrollable scrollable-sm text-left" id="usersWithMostHashtags">
-					</ul>
-				</div>
-
-				<div class="well well-sm">
-					<h2>Meest voorgekomen woorden</h2>
-					<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
-					</ul>
-				</div>
 			</div>
 
 
+			<div class="col-sm-9">
 
-			<div class="col-md-3" id="tweetCol" style="display:none;">
-				<div class="well well-sm">
-					<h1>Live tweets</h1>
-					<small>#marathonradio, @MNMbe, @petervandeveire, @tomdecock en @julievdsteen</small>
-					<a class="twitter-timeline"
-						href="https://twitter.com/search?q=%23marathonradio%20OR%20%40mnmBE%20OR%20%40petervandeveire%20OR%20%40tomdecock%20OR%20%40julievdsteen"
-						data-widget-id="739618451384307712"
-            			data-chrome="nofooter noheader noborders transparent"
-						>
-						Tweets over #marathonradio OR @mnmBE OR @petervandeveire OR @tomdecock OR @julievdsteen
-					</a>
-				</div>
+				<h1>De onofficiële #marathonradio statistieken!</h1>
+
+				<p>Teller loopt sinds 5 juni 2016 en vernieuwt elke minuut.<br/>Laatste update om <span id="lastRefresh"></span></p>
 			</div>
 		</div>
 	</div>
+
+	<div class="container-fluid main-content">
+		<div class="container text-center">
+			<div class="row" style="margin-top:20px;">
+				<div class="col-md-3">
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1 id="tpm">Laden...</h1>
+							<h3>tweets per minuut</h3>
+							<small>Da's <span id="tps">0</span> tweets per seconde!</small>
+							<canvas id="tpmChart" width="400" height="250"></canvas>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body text-left">
+
+							<div class="djStat">
+								<div class="profileImg julie"></div>
+								<h2 id="julieCount">Laden...</h2>
+								<h3>tweets tijdens Julie</h3>
+								<div class="clearfix"></div>
+							</div>
+
+							<div class="djStat">
+								<div class="profileImg tom"></div>
+								<h2 id="tomCount">Laden...</h2>
+								<h3>tweets tijdens Tom</h3>
+								<div class="clearfix"></div>
+							</div>
+
+							<div class="djStat">
+								<div class="profileImg peter"></div>
+								<h2 id="peterCount">Laden...</h2>
+								<h3>tweets tijdens Peter</h3>
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-3">
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1 id="totalTweetCount">Laden...</h1>
+							<h3>tweets met #marathonradio</h3>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2 id="winningTweetHeader">Wie wordt de 100.000ste tweet?</h2>
+							<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
+
+							</div>
+							<div id="winningTweet" style="display:none;">
+								<h2>100.000ste tweet</h2>
+								<div class="text-left">
+									<div class="profileImg pull-left"></div>
+									<h3 class="username"></h3>
+									<span class="tweet"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div id="winningTweet">
+								<h2>50.000ste tweet</h2>
+								<div class="text-left">
+									<div class="profileImg pull-left" style="width: 50px; height: 50px; margin: 0px 10px 10px 0px; background-image: url('img/jo.jpg');"></div>
+									<h3 class="username">@ImjoOfficial</h3>
+									<span class="tweet">@julievdsteen I LOVE YOU #marathonradio</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="col-md-3">
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h1 id="totalUserCount">Laden...</h1>
+							<h3>twitteraars met #marathonradio</h3>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2 style="margin-bottom:15px;font-weight:bold;">Meeste tweets met #marathonradio</h2>
+
+
+							<input type="text" id="search" class="form-control" placeholder="Zoek jou @twitter">
+							<div id="searchResult" style="display:none;">
+								<div>
+									<div class="profileImg"></div>
+									<h1><span id="searchPos"></span> plaats!</h1>
+									<div class="clearfix"></div>
+								</div>
+								<h3>Proficiat! Deel je overwinning:</h3>
+								<div id="twitterBtn"></div>
+							</div>
+							<div id="noResults" style="display:none;">
+								<h3>Helaas, je staat niet in de top 500 :(</h3>
+							</div>
+						</div>
+						<ul style="margin-top:15px;" class="list-group scrollable scrollable-sm text-left" id="usersWithMostHashtags">
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2>Populairste woorden</h2>
+							<h3>(laatste 30 minuten)</h3>
+						</div>
+						<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurencesLastTenMinutes">
+						</ul>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2>Meest gebruikte woorden</h2>
+						</div>
+						<ul class="list-group scrollable scrollable-sm text-left" id="wordOccurences">
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>		
+	</div>
+
 	<!-- /container -->
 
 	<footer>

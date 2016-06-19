@@ -11,8 +11,10 @@ var elixir = require('laravel-elixir');
  |
  */
 
+
 elixir(function(mix) {
 
+	mix.sass('app.scss');
 	mix.copy('node_modules/numeral/min/numeral.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/jquery.animate-number/jquery.animateNumber.min.js', 'resources/assets/js/');
 	mix.copy('node_modules/moment/min/moment-with-locales.min.js', 'resources/assets/js/');
@@ -21,6 +23,5 @@ elixir(function(mix) {
 	mix.copy('node_modules/bootstrap-sass/assets/fonts/', 'public/fonts/');
 	mix.copy('node_modules/jquery/dist/jquery.min.js', 'resources/assets/js/');
     mix.scripts(['numeral.min.js','jquery.min.js','moment-with-locales.min.js', 'jquery.animateNumber.min.js', 'Chart.min.js','bootstrap.min.js'], 'public/js/vendor.js');
-    mix.sass('app.scss');
 
 });
