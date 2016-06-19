@@ -214,7 +214,7 @@ $(function() {
 
 			var a = moment("2016-06-04");
 			var b = moment();
-			var diff = b.diff(a, 'days') // 1
+			var diff = b.diff(a, 'days'); // 1
 			$('#dayCount').html(diff + 1);
 		});
 	}
