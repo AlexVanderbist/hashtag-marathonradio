@@ -178,7 +178,7 @@ $(function() {
 
 			// 50000 tweets
 			if(totalTweetCount != data.totalTweetCount && !data.winningTweet) {
-				$('#randomTweet > div').first().animate({left:-300, opacity:0},1000, function() {
+				$('#randomTweet > div').animate({left:-300, opacity:0},1000, function() {
 					$(this).remove();
 				});
 				$newTweet = $('<div/>')
