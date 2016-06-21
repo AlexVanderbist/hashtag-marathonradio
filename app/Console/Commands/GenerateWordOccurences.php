@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\WordOccurence;
+use DB;
 
 class GenerateWordOccurences extends Command
 {
