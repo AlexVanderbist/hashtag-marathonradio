@@ -2,11 +2,11 @@ $(function() {
 
 	var ctx = document.getElementById("tpmChart");
 	var labels = new Array(60).fill('');
-	labels[0] = '-5min';
-	labels[12] = '-4min';
-	labels[24] = '-3min';
-	labels[36] = '-2min';
-	labels[48] = '-1min';
+	labels[0] = '-10min';
+	labels[12] = '-8min';
+	labels[24] = '-6min';
+	labels[36] = '-4min';
+	labels[48] = '-2min';
 	labels[59] = 'nu';
 	var startData = new Array(60).fill(0);
 	var tpmChart = new Chart(ctx, {
@@ -52,7 +52,7 @@ $(function() {
 	$('#wordOccurencesLastTenMinutes').animatedListUpdate();
 
 
-	setInterval(loadNewData, 5000);
+	setInterval(loadNewData, 10000);
 	//setInterval(loadTweetsPerMinute, 5000);
 
 	loadNewData();
@@ -106,13 +106,15 @@ $(function() {
 
 	var totalTweetCount = 0;
 	var confetti = false;
+	var request;
 
 
 	var usersWithMostHashtags = {};
 	function loadNewData () {
 
 		//console.log('loading new data');
-		$.get("/data", function(data) {
+		if(request) request.abort();
+		request = $.get("/data", function(data) {
 
 			if(data.forceRefresh) location.reload();
 
