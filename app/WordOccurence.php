@@ -23,11 +23,13 @@ class WordOccurence extends Model
 		} else {
 			// all tweets
 			$tweets = Tweet::get();
+	    		echo "\ndude come on\n\n";
 		}
 
 		$allWordsList = [];
 		$tweetCount = 0;
 
+		   echo "\ndude come on\n\n";
 		foreach ($tweets as $key => $tweet) {
 			$wordList = self::extract_common_words($tweet->tweet);
 			foreach ($wordList as $word => $count) {

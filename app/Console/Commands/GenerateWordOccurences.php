@@ -43,13 +43,8 @@ class GenerateWordOccurences extends Command
 		$numOccurences = count($occurences);
 		$addedCount = 0;
 
-    		echo "\ndude come on\n\n";
-
 
 		DB::table('word_occurences')->truncate();
-
-
-    		echo "\ndude come on\n\n";
 
  		foreach ($occurences as $word => $count) {
 			$addedCount ++;
