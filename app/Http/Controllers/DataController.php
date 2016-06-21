@@ -33,17 +33,17 @@ class DataController extends Controller
 
 		//DB::enableQueryLog();
 
-		// $usersWithMostHashtags = DB::table('tweets')
-		// 			                ->select('username', 'image', DB::raw('count(*) as count'))
-		// 							->where('tweet', 'not like', 'RT%')
-		// 			                ->groupBy('user_id')
-		// 			                ->orderBy('count', 'desc')
-		// 			                ->take(50)
-		// 			                ->get();
-		//
-		// $totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
-		//
-		// $totalTweetCount = DB::table('tweets')->count();
+		$usersWithMostHashtags = DB::table('tweets')
+					                ->select('username', 'image', DB::raw('count(*) as count'))
+									->where('tweet', 'not like', 'RT%')
+					                ->groupBy('user_id')
+					                ->orderBy('count', 'desc')
+					                ->take(50)
+					                ->get();
+
+		$totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
+
+		$totalTweetCount = DB::table('tweets')->count();
 
 		//dd($tpm);
 		$scheduleCounts = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
