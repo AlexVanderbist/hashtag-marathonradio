@@ -24,6 +24,8 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+	<canvas id="confetti" width="1" height="1"></canvas>
+
 	<div class="container text-left" id="mainContainer">
 		<div class="row">
 			<div class="col-sm-3 text-center">
@@ -216,6 +218,7 @@
 
 	<script src="{{asset("js/vendor.js?v=2")}}"></script>
 	<script src="{{asset("js/animatedListUpdate.js")}}"></script>
+	<script src="{{asset("js/confetti.js")}}"></script>
 	<script src="{{asset("js/app.js?v=3")}}"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

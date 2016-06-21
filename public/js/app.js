@@ -105,6 +105,7 @@ $(function() {
 
 
 	var totalTweetCount = 0;
+	var confetti = false;
 
 
 	var usersWithMostHashtags = {};
@@ -203,6 +204,12 @@ $(function() {
 				$winningTweet.find('.username').text('@'+data.winningTweet.username);
 				$winningTweet.find('.profileImg').css({'background-image': 'url('+ data.winningTweet.image+ ')', 'width':"70px", 'height':"70px", 'margin': '0 15px 15px 0'});
 				$winningTweet.show();
+
+				if(confetti === false) {
+					var myCustomEvent = new Event('winningEvent');
+					document.dispatchEvent(myCustomEvent);
+					confetti = true;
+				}
 
 			}
 			totalTweetCount = data.totalTweetCount;
