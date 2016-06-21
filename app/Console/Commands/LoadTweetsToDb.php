@@ -49,6 +49,7 @@ class LoadTweetsToDb extends Command
 				return $schedule['id'];
 			}
 		}
+		return 0;
 	}
 
     /**
