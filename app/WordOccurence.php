@@ -22,7 +22,6 @@ class WordOccurence extends Model
 			$tweets = Tweet::where('tweeted_at_datetime', '>=', $timeAgo)->get();
 		} else {
 			// all tweets
-			ini_set("memory_limit", "500M");
 			$tweets = Tweet::all();
 		}
 
