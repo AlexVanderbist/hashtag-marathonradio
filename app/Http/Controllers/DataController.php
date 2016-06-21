@@ -31,19 +31,19 @@ class DataController extends Controller
 
     public function getData() {
 
-		// DB::enableQueryLog();
+		//DB::enableQueryLog();
 
-		$usersWithMostHashtags = DB::table('tweets')
-					                ->select('username', 'image', DB::raw('count(*) as count'))
-									->where('tweet', 'not like', 'RT%')
-					                ->groupBy('user_id')
-					                ->orderBy('count', 'desc')
-					                ->take(500)
-					                ->get();
-
-		$totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
-
-		$totalTweetCount = DB::table('tweets')->count();
+		// $usersWithMostHashtags = DB::table('tweets')
+		// 			                ->select('username', 'image', DB::raw('count(*) as count'))
+		// 							->where('tweet', 'not like', 'RT%')
+		// 			                ->groupBy('user_id')
+		// 			                ->orderBy('count', 'desc')
+		// 			                ->take(50)
+		// 			                ->get();
+		//
+		// $totalUserCount = DB::table('tweets')->count(DB::raw('DISTINCT user_id'));
+		//
+		// $totalTweetCount = DB::table('tweets')->count();
 
 		//dd($tpm);
 		$scheduleCounts = TweetsPerSchedule::orderBy('id', 'desc')->take(12)->get();
@@ -72,7 +72,7 @@ class DataController extends Controller
 
 		$tpm = $this->getTweetsPerMinute();
 
-		// dd(DB::getQueryLog());
+		//dd(DB::getQueryLog());
 
 		$forceRefresh = false;
 
