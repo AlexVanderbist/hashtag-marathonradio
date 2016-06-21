@@ -114,6 +114,8 @@ $(function() {
 		//console.log('loading new data');
 		$.get("/data", function(data) {
 
+			if(data.forceRefresh) location.reload();
+
 			// Random numbers
 			$('#totalTweetCount').setElementNumber(data.totalTweetCount);
 			$('#tps').html(parseFloat(data.tps).toFixed(2));

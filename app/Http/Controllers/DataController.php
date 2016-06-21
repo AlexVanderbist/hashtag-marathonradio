@@ -74,8 +74,11 @@ class DataController extends Controller
 
 		// dd(DB::getQueryLog());
 
+		$forceRefresh = false;
+
 		return response()->json(compact(
 								'winningTweet',
+								'forceRefresh',
 								'lastTweet',
 								'wordOccurencesLastTenMinutes',
 								'tpm',
