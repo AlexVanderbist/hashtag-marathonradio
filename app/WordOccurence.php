@@ -22,7 +22,7 @@ class WordOccurence extends Model
 			$tweets = Tweet::where('tweeted_at_datetime', '>=', $timeAgo)->get();
 		} else {
 			// all tweets
-			$tweets = Tweet::get()->pluck('tweet');
+			$tweets = Tweet::all();
 	    		echo "\ndude come on\n\n";
 		}
 
