@@ -3,10 +3,10 @@
 return [
 	//nl
 	'marathonradio',
-	// 'mnmbe',
-	// 'petervandeveire',
-	// 'julievdsteen',
-	// 'tomdecock',
+	'mnmbe',
+	'petervandeveire',
+	'julievdsteen',
+	'tomdecock',
 	'allemaal',
 	'willen',
 	'kunnen',
