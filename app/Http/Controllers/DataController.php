@@ -60,7 +60,7 @@ class DataController extends Controller
 			];
 		}
 
-		$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(1000)->take(1)->first();
+		$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(100000)->take(1)->first();
 		$lastTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'desc')->take(1)->first();
 //		dd($lastTweet);
 
