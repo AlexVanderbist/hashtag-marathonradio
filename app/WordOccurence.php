@@ -16,26 +16,40 @@ class WordOccurence extends Model
 	];
 
 	static function countOccurences($timeDifference = false, $limit = 100) {
-		if($timeDifference) {
-			// return words from timeframe
-			$timeAgo = new Carbon($timeDifference);
-			$tweets = Tweet::where('tweeted_at_datetime', '>=', $timeAgo)->get();
-		} else {
-			// all tweets
-			$tweets = Tweet::all();
-		}
 
 		$allWordsList = [];
 		$tweetCount = 0;
 
-		   echo "\ndude come on\n\n";
-		foreach ($tweets as $key => $tweet) {
-			$wordList = self::extract_common_words($tweet->tweet);
-			foreach ($wordList as $word => $count) {
-				if(array_key_exists($word, $allWordsList)) $allWordsList[$word] += $count;
-				else $allWordsList[$word] = $count;
+
+
+
+		$chunkSize = 10000; // or whatever your memory allows
+		$totalTweetCt = Tweet::count();
+
+		$chunks = floor($totalTweetCt / $chunkSize);
+
+		for ($chunk = 0; $chunk <= $chunks; $chunk++) {
+
+		    $offset = $chunk * $chunkSize;
+
+			if($timeDifference) {
+				// return words from timeframe
+				$timeAgo = new Carbon($timeDifference);
+			    $tweets = Tweet::skip($offset)->take($chunkSize)->where('tweeted_at_datetime', '>=', $timeAgo)->get();
+			} else {
+				// all tweets
+			    $tweets = Tweet::skip($offset)->take($chunkSize)->get();
 			}
-			$tweetCount++;
+
+		    foreach($tweets as $tweet)
+		    {
+				$wordList = self::extract_common_words($tweet->tweet);
+				foreach ($wordList as $word => $count) {
+					if(array_key_exists($word, $allWordsList)) $allWordsList[$word] += $count;
+					else $allWordsList[$word] = $count;
+				}
+				$tweetCount++;
+		    }
 		}
 
 		arsort($allWordsList);
