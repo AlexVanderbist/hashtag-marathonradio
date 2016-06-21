@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\WordOccurence;
-use DB;
+// use App\WordOccurence;
 
 class GenerateWordOccurences extends Command
 {
@@ -38,22 +37,25 @@ class GenerateWordOccurences extends Command
      * @return mixed
      */
 	 public function handle() {
- 		$occurences = WordOccurence::countOccurences(false, 100);
-		$numOccurences = count($occurences);
-		$addedCount = 0;
-
-		DB::table('word_occurences')->truncate();
-
- 		foreach ($occurences as $word => $count) {
-			$addedCount ++;
-
-			echo "> ".($addedCount/$numOccurences)*100 . "% done.\r";
-
- 			WordOccurence::create([
- 				'word' => $word,
-				'occurences' => $count
- 			]);
- 		}
-		echo "\n\nDone: " + $numOccurences + " tweets processed!\n";
+ 		echo "\ndude come on\n\n";
+		//
+ 	// 	$occurences = WordOccurence::countOccurences(false, 100);
+		// $numOccurences = count($occurences);
+		// $addedCount = 0;
+		//
+		//
+		// DB::table('word_occurences')->truncate();
+		//
+ 	// 	foreach ($occurences as $word => $count) {
+		// 	$addedCount ++;
+		//
+		// 	echo "> ".($addedCount/$numOccurences)*100 . "% done.\r";
+		//
+ 	// 		WordOccurence::create([
+ 	// 			'word' => $word,
+		// 		'occurences' => $count
+ 	// 		]);
+ 	// 	}
+		// echo "\n\nDone: " + $numOccurences + " tweets processed!\n";
  	}
 }
