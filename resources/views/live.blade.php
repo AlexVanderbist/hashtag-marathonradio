@@ -98,16 +98,12 @@
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h2 id="winningTweetHeader">Wie wordt de 100.000ste tweet?</h2>
-						<div id="randomTweet" style="position:relative; overflow: hidden" class="text-left">
-
-						</div>
 						<div id="winningTweet" style="display:none;">
 							<h2>100.000ste tweet</h2>
 							<div class="text-left">
-								<div class="profileImg pull-left"></div>
-								<h3 class="username"></h3>
-								<span class="tweet"></span>
+								<div class="profileImg pull-left" style="width: 50px; height: 50px; margin: 0px 10px 10px 0px; background-image: url('img/jo.jpg');"></div>
+								<h3 class="username">@LeniSonck</h3>
+								<span class="tweet">Liefde voor #marathonradio #marathonradio #nothingbutlove https://t.co/8llrk9O4wO</span>
 							</div>
 						</div>
 					</div>
