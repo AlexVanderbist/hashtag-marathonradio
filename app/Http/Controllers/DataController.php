@@ -60,8 +60,13 @@ class DataController extends Controller
 			];
 		}
 
-		$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(100000)->take(1)->first();
-		$lastTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'desc')->take(1)->first();
+		//$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(100000)->take(1)->first();
+		$winningTweet = [
+			'image' => "http://pbs.twimg.com/profile_images/732281049858867200/ZTmjDU41_normal.jpg",
+			'tweet' => "Liefde voor #marathonradio #marathonradio #nothingbutlove  https://t.co/8llrk9O4wO",
+			'username' => 'LeniSonck'
+		];
+		//$lastTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'desc')->take(1)->first();
 //		dd($lastTweet);
 
 		$tweetsPerPerson = [
