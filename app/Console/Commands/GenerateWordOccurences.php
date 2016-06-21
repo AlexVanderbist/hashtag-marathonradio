@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-// use App\WordOccurence;
+use App\WordOccurence;
 
 class GenerateWordOccurences extends Command
 {
@@ -38,7 +38,7 @@ class GenerateWordOccurences extends Command
      */
 	 public function handle() {
  		echo "\ndude come on\n\n";
-		
+
  		$occurences = WordOccurence::countOccurences(false, 100);
 		$numOccurences = count($occurences);
 		$addedCount = 0;
