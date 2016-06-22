@@ -2,11 +2,11 @@
 
 return [
 	//nl
-	'marathonradio',
-	'mnmbe',
-	'petervandeveire',
-	'julievdsteen',
-	'tomdecock',
+	'#marathonradio',
+	'@mnmbe',
+	'@petervandeveire',
+	'@julievdsteen',
+	'@tomdecock',
 	'allemaal',
 	'willen',
 	'kunnen',
@@ -42,7 +42,7 @@ return [
 	'iets',
 	'httpstconvpxvbgvkv',
 	'hoor',
-	'sandergillis',
+	'@sandergillis',
 	'worden',
 	'wanneer',
 	'noem',
