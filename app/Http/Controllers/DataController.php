@@ -31,7 +31,7 @@ class DataController extends Controller
 
     public function getData() {
 
-		DB::enableQueryLog();
+		// DB::enableQueryLog();
 
 		// $usersWithMostHashtags = DB::table('tweets')
 		// 			                ->select('username', 'image', DB::raw('count(*) as count'))
@@ -77,7 +77,7 @@ class DataController extends Controller
 
 		$tpm = $this->getTweetsPerMinute();
 
-		dd(DB::getQueryLog());
+		// dd(DB::getQueryLog());
 
 		$forceRefresh = false;
 
