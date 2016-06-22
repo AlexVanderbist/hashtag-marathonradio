@@ -61,7 +61,7 @@ class WordOccurence extends Model
 	static function extract_common_words($string) {
 		//$string = preg_replace('/ss+/i', '', $string);
 		$string = trim($string); // trim the string
-		$string = preg_replace('/[^a-zA-Z\d -\_@#]/', '', $string); // only take alphabet characters, but keep the spaces and dashes too…
+		$string = preg_replace('/[^a-zA-Z\d \-\_@#]/', '', $string); // only take alphabet characters, but keep the spaces and dashes too…
 		$string = strtolower($string); // make it lowercase
 
 		//preg_match_all('/\b.*?\b/i', $string, $match_words);
