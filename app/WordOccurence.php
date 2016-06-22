@@ -21,10 +21,13 @@ class WordOccurence extends Model
 		$tweetCount = 0;
 
 
+		$timeAgo = new Carbon($timeDifference);
 
 
 		$chunkSize = 10000; // or whatever your memory allows
-		$totalTweetCt = Tweet::count();
+		if($timeDifference) {
+			$totalTweetCt = Tweet::where('tweeted_at_datetime', '>=', $timeAgo)->count();
+		} else $totalTweetCt = Tweet::count();
 
 		$chunks = floor($totalTweetCt / $chunkSize);
 
@@ -34,7 +37,6 @@ class WordOccurence extends Model
 
 			if($timeDifference) {
 				// return words from timeframe
-				$timeAgo = new Carbon($timeDifference);
 			    $tweets = Tweet::skip($offset)->take($chunkSize)->where('tweeted_at_datetime', '>=', $timeAgo)->get();
 			} else {
 				// all tweets
