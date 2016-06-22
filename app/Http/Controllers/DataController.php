@@ -51,14 +51,14 @@ class DataController extends Controller
 		$tps = $tpm / 60;
 
 		$wordOccurences = WordOccurence::orderBy('occurences', 'desc')->take(100)->get();
-		$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('20 minutes ago', 10);
+		//$wordOccurencesLastTenMinutesRaw = WordOccurence::countOccurences('20 minutes ago', 10);
 		$wordOccurencesLastTenMinutes = [];
-		foreach ($wordOccurencesLastTenMinutesRaw as $word => $count) {
-			$wordOccurencesLastTenMinutes[] = [
-				'word' => $word,
-				'occurences' => $count
-			];
-		}
+		// foreach ($wordOccurencesLastTenMinutesRaw as $word => $count) {
+		// 	$wordOccurencesLastTenMinutes[] = [
+		// 		'word' => $word,
+		// 		'occurences' => $count
+		// 	];
+		// }
 
 		//$winningTweet = DB::table('tweets')->orderBy('tweeted_at_datetime', 'asc')->skip(100000)->take(1)->first();
 		$winningTweet = [
